@@ -224,6 +224,9 @@
 .card-item__cover {
     display: flex;
     position: relative;
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
 }
 
 .card-item__img--back {
@@ -236,6 +239,9 @@
 
 .card-item__cover img {
     animation: fade 1.7s ease-in-out;
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
 }
 
 .card-item__cover:hover .card-item__img--front {

@@ -1,5 +1,14 @@
-.card-item__cover {
+.item .card-item__cover {
     display: block;
+    width: 450px;
+    height: 450px;
+}
+
+.item .card-item__cover img {
+    animation: fade 1.7s ease-in-out;
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
 }
 
 .item {
@@ -9,8 +18,8 @@
 }
 
 .item__img {
-    max-width: 550px;
-    min-width: 250px;
+    /* max-width: 550px;
+    min-width: 250px; */
 }
 
 .item__info {
