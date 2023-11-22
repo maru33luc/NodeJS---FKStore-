@@ -13,7 +13,7 @@ router.post('/item/:id/add', adminControllers.addCart);
 router.get('/edit/:id', adminControllers.getEdit);
 
 
-router.put('/edit/:id',adminControllers.postEdit);
+router.post('/edit/:id',adminControllers.postEdit);
 
 router.delete('/delete/:id', adminControllers.delete);
 

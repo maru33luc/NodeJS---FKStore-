@@ -15,8 +15,7 @@
 @import url('./partials/footer.css');
 @import url('./partials/buttons.css');
 @import url('./partials/form.css');
-@import url('./partials/card.css');
-@import url('./partials/slider.css');
+
 
 
 /* PAGES */
@@ -33,7 +32,7 @@
 
 
 p {
-    font-size: var(--font-medium);
+    font-size: var(--font-xsmall);
 }
 
 .container {

@@ -2,111 +2,97 @@
 <html lang="en">
 <%- include ('../partials/head') %>
 
-    <body>
-        <%- include ('../partials/admin-header') %>
+<body>
+    <%- include ('../partials/admin-header') %>
 
-            <main id="create" class="container">
-                <h2 class="create__title">CREAR NUEVO ITEM</h2>
-                <form class="create__form" action="/admin/create" method="POST"
-                    enctype="application/x-www-form-urlencoded">
-                    <div class="form__flex">
-                        <div class="form__box--flex">
-                            <label class="form__label" for="collection">Categoría:</label>
-                            <select class="form__select" name="collection" id="collection" required>
-                                <option value="" disabled selected hidden>Seleccionar</option>
-                                <option value="Figuras Coleccionables">Figuras Coleccionables</option>
-                                <option value="Llaveros">Llaveros</option>
-                                <option value="Remeras">Remeras</option>
-                            </select>
-                        </div>
-                        <div class="form__box--flex">
-                            <label class="form__label" for="collection">Licencia:</label>
-                            <select class="form__select" name="collection" id="collection" required>
-                                <option value="" disabled selected hidden>Seleccionar</option>
-                                <option value="starwars">Star Wars</option>
-                                <option value="pokemon">Pokemon</option>
-                                <option value="harrypotter">Harry Potter</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__box--flex">
-                        <label class="form__label" for="name">Nombre del producto:</label>
-                        <input class="form__input" type="text" name="name" id="name"
-                            placeholder="Kakashi Hatake Shippuden Saga" required>
-                    </div>
-                    <div>
-                        <textarea name="description" id="description" cols="30" rows="10"
-                            placeholder="Descripción del producto" required></textarea>
-                    </div>
-                    <div class="form__flex">
-                        <div class="form__box--flex">
-                            <label class="form__label" for="sku">SKU:</label>
-                            <input class="form__input" type="text" name="sku" id="sku" placeholder="SSK111AB001"
-                                required>
-                        </div>
-                        <div class="form__box--flex">
-                            <label class="form__label" for="price">Precio:</label>
-                            <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text"
-                                    name="price" id="price" data-type="currency" placeholder="0.000,00"></div>
-                        </div>
-                        <div class="form__box--flex">
-                            <label class="form__label" for="stock">Stock:</label>
-                            <div class="form__input--wrapper"><input class="form__input" type="text" name="stock"
-                                    id="stock" placeholder="0" required><span>unidades</span></div>
-                        </div>
-                    </div>
-                    <div class="form__flex">
-                        <div class="form__box--flex">
-                            <label class="form__label" for="discount">Descuento:</label>
-                            <div class="form__input--wrapper"><input class="form__input" type="text" name="discount"
-                                    id="discount" placeholder="0" required><span>%</span></div>
-                        </div>
-                        <div class="form__box--flex">
-                            <label class="form__label" for="dues">Cuotas:</label>
-                            <select class="form__select" name="dues" id="dues">
-                                <option value="0">Sin cuotas</option>
-                                <option value="3">3 cuotas s/ interés</option>
-                                <option value="6">6 cuotas s/ interés</option>
-                                <option value="9">9 cuotas s/ interés</option>
-                                <option value="12">12 cuotas s/ interés</option>
-                                <option value="18">18 cuotas s/ interés</option>
-                                <option value="24">24 cuotas s/ interés</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__box--flex">
-                        <label class="form__label" for="images">Imagenes:</label>
-                        <input type="file" name="images" id="img" multiple>
-                    </div>
-                    <div class="form__flex">
-                        <input class="form__btn btn btn--primary btn--large" type="submit" value="Agregar Producto">
-                        <input class="form__btn btn btn--primary btn--large" type="reset" value="Limpiar">
-                    </div>
-                </form>
-            </main>
-
-            <!-- <%- include ('../partials/footer') %> -->
-
-
-            <footer class="footer">
-
-                <nav class="navbar container">
-                    <ul class="navbar__items">
-                        <li class="navbar__item"><a class="navbar__link" href="./pages/shop/shop.html">SHOP</a></li>
-                        <li class="navbar__item"><a class="navbar__link" href="./pages/shop/register.html">REGISTRARSE</a></li>
-                        <li class="navbar__item"><a class="navbar__link" href="./pages/login.html">LOGIN</a></li>
-                        <li class="navbar__item"><a class="navbar__link" href="./pages/contact.html">CONTACTO</a></li>
+    <main id="create" class="container">
+        <h2 class="create__title">CREAR NUEVO ITEM</h2>
+        <form class="create__form" action="/admin/create" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="form__flex">
+               
+                <div class="form__box--flex">
+                    <label class="form__label" for="licence_name">Licencia:</label>
+                    <select class="form__select" name="licence_name" id="licence_name" required>
+                        <option value="" disabled selected hidden>Seleccionar</option>
+                        <option value="Star Wars">Star Wars</option>
+                        <option value="Pokemon">Pokemon</option>
+                        <option value="Harry Potter">Harry Potter</option>
+                        <option value="Marvel">Marvel</option>
+                        <option value="DC Comics">DC Comics</option>
+                        <option value="Disney">Disney</option>
+                        <option value="Anime">Anime</option>
+                        <option value="Game of Thrones">Game of Thrones</option>
+                        <option value="The Simpsons">The Simpsons</option>
+                    </select>
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__label" for="category_name">Categoría:</label>
+                    <select class="form__select" name="category_name" id="category_name" required>
+                        <option value="" disabled selected hidden>Seleccionar</option>
+                        <option value="Funko Pop!">Funko Pop!</option>
+                        <option value="Llaveros">Llaveros</option>
+                        <option value="Minis">Minis</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form__box--flex">
+                <label class="form__label" for="product_name">Nombre del producto:</label>
+                <input class="form__input" type="text" name="product_name" id="product_name" placeholder="Kakashi Hatake Shippuden Saga" required>
+            </div>
+            <div>
+                <textarea name="product_description" id="description" cols="30" rows="10" placeholder="Descripción del producto" required></textarea>
+            </div>
+            <div class="form__flex">
+                <div class="form__box--flex">
+                    <label class="form__label" for="product_sku">SKU:</label>
+                    <input class="form__input" type="text" name="product_sku" id="product_sku" placeholder="SSK111AB001" required>
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__label" for="product_price">Precio:</label>
+                    <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="product_price" id="product_price" data-type="currency" placeholder="0.000,00" required></div>
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__label" for="product_stock">Stock:</label>
+                    <div class="form__input--wrapper"><input class="form__input" type="number" name="product_stock" id="product_stock" placeholder="0" required><span>unidades</span></div>
+                </div>
+            </div>
+            <div class="form__flex">
+                <div class="form__box--flex">
+                    <!-- <label class="form__label" for="discount">Descuento:</label>
+                    <div class="form__input--wrapper"><input class="form__input" type="text" name="discount" id="discount" placeholder="0" required><span>%</span></div> -->
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__label" for="dues">Cuotas:</label>
+                    <select class="form__select" name="dues" id="dues">
+                        <option value="0">Sin cuotas</option>
+                        <option value="3">3 cuotas s/ interés</option>
+                        <option value="6">6 cuotas s/ interés</option>
+                        <option value="9">9 cuotas s/ interés</option>
+                        <option value="12">12 cuotas s/ interés</option>
+                        <option value="18">18 cuotas s/ interés</option>
+                        <option value="24">24 cuotas s/ interés</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form__box--flex">
+                <label class="form__label" for="images">Imagenes:</label>
+                <!-- <input type="file" name="images" id="img" multiple> -->
+                <input class="form__input" type="text" name="img-front" id="img-front" placeholder="https://www.funkostore.com.ar/img/products/1.jpg"  required>
+                <input class="form__input" type="text" name="img-back" id="img-back" placeholder="https://www.funkostore.com.ar/img/products/1.jpg"  required>
             
-                    </ul>
-                    <picture>
-                        <img src="../img/branding/isotype.svg" alt="Isotipo de la marca FunkoShop">
-                    </picture>
-                </nav>
             
-                <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-            </footer>
-                <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
-                <script src="../../js/app.js"></script>
-    </body>
+            </div>
+            <div class="form__flex">
+                <input class="form__btn btn btn--primary btn--large" type="submit" value="Agregar Producto">
+                <input class="form__btn btn btn--primary btn--large" type="reset" value="Limpiar">
+            </div>
+        </form>
+    </main>
+
+    <%- include ('../partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="../../js/app.js"></script>
+</body>
 
 </html>

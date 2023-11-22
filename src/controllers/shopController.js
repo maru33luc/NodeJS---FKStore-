@@ -5,12 +5,10 @@ const funkos = JSON.parse(funkoJson);
 
 const shopControllers = {
     index: (req, res) => {
-        // res.send('Route for get all products');
         res.render('shop/shop', { funkos: funkos });
+        
     },
     detail: (req, res) => {
-        // res.send('Route for get a product from an id');
-
         const id = req.params.id;
         const funko = funkos.find(f => f.product_id == id);
         if(!funko) {
@@ -18,11 +16,8 @@ const shopControllers = {
         }else{
             return res.render('shop/item', { funko: funko, funkos: funkos });
         }
-        
-        
     },
     cart: (req, res) => {
-        // res.send('Route for the cart view');
         res.render('shop/cart');
     },
     checkout: (req, res) => {

@@ -7,46 +7,27 @@ const authRoutes = require('./src/routes/authRoutes');
 const cors = require('cors');
 const { url } = require('inspector');
 const path = require('path');
-
+const methodOverride = require('method-override');
 
 const app = express();
 app.use(cors()); // Use this after the variable declaration
 app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded()); // for parsing application/x-www-form-urlencoded
-app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.urlencoded()); // for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public'), { strict: false }));
+// app.use('/css', express.static('public/css', { 'strict': false }));
 
 const port = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/src/views'));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + 'public/index.html');
-// });
 
-// app.get('/admin', (req, res) => {
-//     res.sendFile(__dirname + '/public/pages/admin/admin.html');
-// });
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
-
-
-// app.get('/funkos', (req, res) => {
-//     res.sendFile(__dirname + '/public/data/mis_funkos.json');
-// });
-
-// app.get('/funkos/:id', (req, res) => {
-    
-//     const id = req.params.id;
-    
-//     const data = fs.readFileSync(__dirname + '/data/db.js', 'utf8');
-//     const funkos = JSON.parse(data);
-//     const funko = funkos.find(f => f.product_id == id);
-//     res.send(funko);
-// });
-
 
 
 app.use ('/', mainRoutes);
