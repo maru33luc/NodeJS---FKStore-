@@ -8,7 +8,7 @@ const mainControllers = {
         res.render('index', {funkos: funkos});
     },
     contact: (req, res) => {
-        res.send('Route for Contact View');
+        res.render('shop/contact');
     },
     about: (req, res) => {
         res.send('Route for About View');

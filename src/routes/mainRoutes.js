@@ -12,5 +12,9 @@ router.get('/about', mainControllers.about);
 router.get('/faqs', mainControllers.faqs);
 
 
+router.get('/', (req, res) => {
+    res.redirect('/home');
+});
+
 
 module.exports = router;

@@ -4,10 +4,10 @@
 
 <%- include ('../partials/head') %>
 
-<body>
-    <%- include ('../partials/header') %>
+    <body>
+        <%- include ('../partials/header') %>
 
-    <main class="main-container">
+            <!-- <main class="main-container">
         <section class="cart__items">
             <h2 class="title">CARRITO DE COMPRAS</h2>
            
@@ -76,12 +76,84 @@
 
         </section>
 
-    </main>
+    </main> -->
 
-    <%- include ('../partials/footer') %>
+            <main class="main cart-main">
+                <h1 class="h1">CARRITO DE COMPRAS</h1>
 
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="../../js/item.js"></script>
-</body>
+                <ul class="cart-items">
+                    <% funkos.forEach(item=> { %>
+                        <li class="cart-item">
+                            <div class="cart-item-info">
+                                <picture class="cart-item-picture">
+                                    <img src="<%= item['img-front'] %>" alt="">
+                                </picture>
+
+                                <article class="cart-item-content">
+                                    <p class="cart-item-name">Funko
+                                        <%= item.product_name %>
+                                    </p>
+                                    <p class="cart-item-serie">Serie
+                                        <%= item.category_name %>
+                                    </p>
+                                    <p class="cart-item-license">Licencia
+                                        <%= item.licence_name %>
+                                    </p>
+                                </article>
+                            </div>
+
+                            <div class="item-cart-quantity">
+                                <button class="item__quantity" id="substract"
+                                    >-</button>
+                                <input class="item-input" type="text" id="quantity" 
+                                    value="" placeholder="0">
+                                <button class="item__quantity" id="add"
+                                    >+</button>
+                                
+                            </div>
+
+                            <div class="cart-total-price">
+                                <p>$10000</p>
+                            </div>
+
+                            <div>
+                                <img class="cart-item-delete" src="/img/icons/gg-close-o.svg" alt=""
+                                    >
+                            </div>
+                        </li>
+                        <% }); %>
+                </ul>
+
+                <section class="resumen__cart">
+                    <h2 class="title">RESUMEN</h2>
+                    <article class="resumen__cart-container">
+                        <div class="resumen__cart-line">
+                            <p>CANTIDAD DE ELEMENTOS</p>
+                            <p>3</p>
+                        </div>
+                        <div class="resumen__cart-line">
+                            <p>SUBTOTAL</p>
+                            <p>$1799.99</p>
+                        </div>
+                        <div class="resumen__cart-line">
+                            <p>ENVIO</p>
+                            <p>$0</p>
+                        </div>
+                        <div class="resumen__cart-line">
+                            <p>TOTAL</p>
+                            <p>$1799.99</p>
+                        </div>
+                    </article>
+        
+                    <a href="./checkout.html" class="cart__btn-pay">IR A PAGAR</a>
+        
+                </section>
+            </main>
+
+            <%- include ('../partials/footer') %>
+
+                <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                <script src="../../js/item.js"></script>
+    </body>
 
 </html>

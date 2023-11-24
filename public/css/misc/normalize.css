@@ -34,7 +34,7 @@ img {
 }
 
 input[type="text"]::placeholder {
-    color: var(--dark-300);
+    /* color: var(--dark-300); */
     font-family: var(--base-font);
     font-weight: 500;
 }
