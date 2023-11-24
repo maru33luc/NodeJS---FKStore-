@@ -61,7 +61,6 @@ p {
     }
 }
 
-
 .h1 {
     font-family: var(--alternative-font);
     font-size: var(--font-large);
@@ -96,6 +95,12 @@ p {
 
 .button:hover {
     background-color: var(--secondary);
+}
+
+.form__error{
+    color: red;
+    font-size: var(--font-small);
+    margin-top: 0.5rem;
 }
 
 

@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+const crypto = require('crypto');
 const fs = require('fs');
 const mainRoutes = require('./src/routes/mainRoutes');
 const shopRoutes = require('./src/routes/shopRoutes');
@@ -10,6 +12,15 @@ const path = require('path');
 const methodOverride = require('method-override');
 
 const app = express();
+const secretKey = crypto.randomBytes(32).toString('hex');
+
+app.use(session({
+    secret : secretKey,
+    resave : false,
+    saveUninitialized : false
+}));
+
+
 app.use(cors()); // Use this after the variable declaration
 app.use(express.json()); // for parsing application/json
 // app.use(express.urlencoded()); // for parsing application/x-www-form-urlencoded

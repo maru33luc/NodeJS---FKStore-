@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     background: var(--light-bg-solid);
     min-width: 180px;
 }
@@ -18,18 +18,23 @@
 
 .custom-select {
     position: relative;
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 1.5em;
 }
 
 .custom-select select {
-    width: 240px;
+    width: 280px;
     line-height: 2;
     padding: 5px;
     background-color: var(--light-font-solid);
     height: 35px;
     padding-left: 7px;
     border: 2.3px solid #000000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .aside__input input {
@@ -55,27 +60,28 @@
 }
 
 .aside__input {
-    padding: 16px;
-    padding-right: 0px;
+    /* padding: 16px;
+    padding-right: 0px; */
+    margin-top: 30px;
 }
 
 .aside__input .precio input {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 5px;
     font-size: var(--font-xsmall);
 }
 
 #min-price {
-    width: 60px;
+    width: 94px;
 }
 
 #max-price {
-    width: 90px;
+    width: 94px;
 }
 
 .aside__input:first-of-type input {
     line-height: 1.6;
-    width: 240px;
+    width: 280px;
     margin-top: 10px;
     padding: 5px;
     font-size: var(--font-xsmall);
@@ -125,7 +131,7 @@
 
 .label {
     font-family: Inter;
-    font-size: var(--font-large);
+    font-size: var(--font-medium);
     font-weight: 500;
     line-height: 29px;
     letter-spacing: 0em;
@@ -139,7 +145,7 @@
 }
 
 .checkbox__label-text {
-    font-size: 18px;
+    font-size: var(--font-xsmall);
 }
 
 .checkbox-input {
@@ -197,8 +203,8 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    margin-top: 50px;
-    margin-left: 60px;
+    margin-top: 25px;
+    margin-left: 30px;
 }
 
 .card-item{

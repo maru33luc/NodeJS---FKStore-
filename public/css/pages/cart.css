@@ -14,8 +14,8 @@
 }
 
 main {
-    margin-right: 5em;
-    margin-left: 5em;
+    /* margin-right: 5em;
+    margin-left: 5em; */
     display: flex;
     flex-direction: column;
 }

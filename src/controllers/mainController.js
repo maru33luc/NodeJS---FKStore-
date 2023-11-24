@@ -4,8 +4,8 @@ const funkos = JSON.parse(funkoJson);
 
 const mainControllers = {
     home: (req, res) => {
-        // res.send('Route for Home View');
-        res.render('index', {funkos: funkos});
+        const user = req.session.userLogged;
+        res.render('index', {funkos: funkos, user: user});
     },
     contact: (req, res) => {
         res.render('shop/contact');

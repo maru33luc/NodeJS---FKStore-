@@ -4,20 +4,26 @@ const funkos = JSON.parse(funkoJson);
 
 
 const shopControllers = {
+    
     index: (req, res) => {
-        res.render('shop/shop', { funkos: funkos });
+        const user = req.session.userLogged;
+
+        res.render('shop/shop', { funkos: funkos, user: user });
         
     },
     detail: (req, res) => {
+        const user = req.session.userLogged;
         const id = req.params.id;
         const funko = funkos.find(f => f.product_id == id);
         if(!funko) {
             return res.send('No se encontró el funko que estás buscando');
         }else{
-            return res.render('shop/item', { funko: funko, funkos: funkos });
+            return res.render('shop/item', { funko: funko, funkos: funkos,
+            user: user });
         }
     },
     cart: (req, res) => {
+        const user = req.session.userLogged;
         const funkos = [ {
             "product_id": 9,
     "licence_name": "Harry Potter",
@@ -34,7 +40,7 @@ const shopControllers = {
         }
         
         ];
-        res.render('shop/cart', { funkos: funkos });
+        res.render('shop/cart', { funkos: funkos, user: user });
     },
     checkout: (req, res) => {
         res.send('Route for go to checkout page');
