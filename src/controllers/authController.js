@@ -1,18 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
-const usersFilePath = path.join(__dirname, '../../data/users.js');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
+// const usersFilePath = path.join(__dirname, '../../data/users.js');
+// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+const userService = require('../services/userServices.js');
 
 const authControllers = {
     login: (req, res) => {
         const user = req.session.userLogged;
-        res.render ('auth/login', {user: user});
+        res.render ('auth/login', {user: user, errors: undefined});
     },
     processLogin: (req, res) => {
         const {email, password} = req.body;
-        let userToLogin = users.find(user => user.email === email && user.password === password);
+        let userToLogin = userService.getUserByEmailAndPass(email, password);
         if (userToLogin) {
             req.session.userLogged = userToLogin;
             res.redirect('/');
@@ -27,10 +27,32 @@ const authControllers = {
         }
     },
     register: (req, res) => {
-        res.render ('auth/register');
+        const user = req.session.userLogged;
+        res.render ('auth/register', {user: user});
     },
     processRegister: (req, res) => {
-        res.render ('auth/register');
+        const user = req.session.userLogged;
+        const {name, lastname, email, password} = req.body;
+        let userInDB = userService.getUserByEmailAndPass(email, password)
+        if (userInDB) {
+            res.render('auth/register', {
+                errors: {
+                    email: {
+                        msg: 'Este email ya está registrado'
+                    }
+                }, user: user
+            });
+        } else {
+            let newUser = {
+                name: name.trim(),
+                lastname: lastname.trim(),
+                email: email.trim(),
+                password: password.trim(),
+            };
+            userService.createUser(newUser);
+            res.redirect('/login');
+        }
+        
     },
     logout: (req, res) => {
         req.session.destroy();
