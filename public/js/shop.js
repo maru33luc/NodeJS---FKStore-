@@ -1,5 +1,6 @@
 const minPriceInput = document.getElementById('min-price');
 const maxPriceInput = document.getElementById('max-price');
+const buscar = document.getElementById('buscar');
 
 minPriceInput.addEventListener('change', function () {
     validarYFormatearPrecios(minPriceInput);
@@ -21,8 +22,16 @@ function validarYFormatearPrecios(input) {
     const minPriceValue = parseFloat(input.value);
     const minPriceFormatted = minPriceValue.toFixed(2);
     input.value = minPriceFormatted;
-
 }
+
+
+
+
+
+
+
+
+
 
 // --------------Pagination----------------
 

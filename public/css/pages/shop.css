@@ -3,7 +3,7 @@
 .shop__container {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* flex-wrap: wrap; */
     /* margin-left: 2rem; */
     background: var(--light-bg-solid);
     min-width: 180px;
@@ -54,15 +54,28 @@
 .shop__aside {
     display: inline-flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 10px;
     align-items: start;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 620px) {
+    .shop__aside {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 
 .aside__input {
     /* padding: 16px;
     padding-right: 0px; */
     margin-top: 30px;
+}
+
+@media screen and (max-width: 605px) {
+    .aside__input{
+        /* margin-top: 0px; */
+    }
 }
 
 .aside__input .precio input {
@@ -165,6 +178,34 @@
     padding-left: 2px;
 }
 
+button.aplicarFiltroBtn {
+    background: var(--primary-solid);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-self: center;
+}
+
+button.aplicarFiltroBtn:hover {
+    background-color: #333;
+}
+
+@media screen and (max-width: 550px) {
+    button.aplicarFiltroBtn {
+        align-self: flex-start;
+    }
+}
+
 @media screen and (max-width: 350px) {
     .aside__input:first-of-type input {
         width: 50vw;
@@ -211,7 +252,7 @@
 }
 
 .card-item{
-    margin: 30px;
+    margin: 15px;
 }
 
 /* ----------------- PAGINACION ----------------------------- */
@@ -270,7 +311,7 @@
 
 /* ----------------- MEDIA QUERIES ----------------------------- */
 
-@media screen and (max-width: 920px) {
+@media screen and (920px > width ) {
     .shop__container {
         display: flex;
         flex-direction: column;
@@ -349,6 +390,8 @@
         justify-content: flex-start;
         margin-left: 0;
     }
+
+  
 }
 
 @media  screen and (max-width: 350px) {

@@ -230,59 +230,7 @@
 }
 
 @media screen and (max-width: 360px) {
-    .item__info .card-item__licence,
-    .card-item__licence {
-        font-size: 1em;
-    }
-
-    .item__info .card-item__name {
-        font-size: 2em;
-        text-wrap: wrap;
-    }
-
-    .item__info .item__description {
-        font-size: 1.5em;
-        text-wrap: wrap;
-    }
-
-    .item__info .card-item__price {
-        font-size: 2em;
-    }
-
-    .item__promo {
-        font-size: 0.8em;
-    }
-
-    .slider__title-productos {
-        font-size: 2em;
-
-    }
-
-    .card-item__cover {
-        max-width: 300px;
-        min-width: 180px;
-
-    }
-
-    .card-item__cover {
-        max-width: 70%;
-    }
-
-    .card-item__name {
-        font-size: 1.5em;
-    }
-
-    .card-item__price {
-        font-size: 1.2em;
-    }
-
-    .card-item__promo {
-        font-size: 0.9em;
-    }
-
-    .card-item__tag {
-        font-size: 0.9em;
-    }
+    
 
     .glide__arrow--right {
         /* right:calc(50% - 20px); */
