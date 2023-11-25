@@ -1,13 +1,11 @@
-const fs = require('fs');
-const funkoJson = fs.readFileSync(__dirname + '../../../data/db.js', 'utf8');
-const funkos = JSON.parse(funkoJson);
+const funkoService = require('../services/funkoServices');
 
 
 const shopControllers = {
     
     index: (req, res) => {
         const user = req.session.userLogged;
-
+        const funkos = funkoService.getFunkos();
         res.render('shop/shop', { funkos: funkos, user: user });
         
     },

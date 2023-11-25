@@ -67,8 +67,10 @@
 
 .aside__input .precio input {
     /* margin-top: 10px; */
-    padding: 5px;
+    /* padding: 5px; */
     font-size: var(--font-xsmall);
+    line-height: 2;
+    padding-left: 5px;
 }
 
 #min-price {
@@ -118,7 +120,7 @@
     text-align: left;
     color: var(--dark-solid);
     margin-right: 2px;
-    margin-top: 13px;
+    /* margin-top: 13px; */
 }
 
 .precio div:nth-child(2) {
@@ -159,7 +161,8 @@
 }
 
 .precio input::placeholder {
-    text-align: center;
+    /* text-align: center; */
+    padding-left: 2px;
 }
 
 @media screen and (max-width: 350px) {
@@ -319,13 +322,13 @@
     }
 
     .aside__input:first-of-type input {
-        line-height: 1.5em;
-        font-size: calc(0.8rem + 0.5vw);
+        /* line-height: 1.5em; */
+        font-size: var(--font-xsmall);
         padding: 5px;
     }
 
     .aside__input .precio input {
-        line-height: 1.5;
+        line-height: 1.8;
         padding: 0;
     }
 
@@ -334,7 +337,7 @@
     }
 
     .checkbox__label-text {
-        font-size: calc(0.8rem + 0.5vw);
+        font-size: var(--font-xsmall);
     }
 
     .shop__container {
