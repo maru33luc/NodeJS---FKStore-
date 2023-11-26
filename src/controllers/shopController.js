@@ -12,7 +12,8 @@ const shopControllers = {
     detail: (req, res) => {
         const user = req.session.userLogged;
         const id = req.params.id;
-        const funko = funkos.find(f => f.product_id == id);
+        const funkos = funkoService.getFunkos();
+        const funko = funkoService.getFunko(id);
         if(!funko) {
             return res.send('No se encontró el funko que estás buscando');
         }else{

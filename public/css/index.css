@@ -103,6 +103,13 @@ p {
     margin-top: 0.5rem;
 }
 
+.error-message{
+    color: red;
+    font-size: var(--font-small);
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
 
 
 

@@ -28,7 +28,10 @@ const authControllers = {
     },
     register: (req, res) => {
         const user = req.session.userLogged;
-        res.render ('auth/register', {user: user});
+        const errors = undefined;
+        const oldData = '';
+        res.render ('auth/register', {user: user, errors: errors,
+            oldData: oldData});
     },
     processRegister: (req, res) => {
         const user = req.session.userLogged;
