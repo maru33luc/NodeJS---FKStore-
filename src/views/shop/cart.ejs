@@ -41,8 +41,8 @@
                                 
                             </div>
 
-                            <div class="cart-total-price">
-                                <p>$10000</p>
+                            <div class="cart-total-price" >
+                                <p id="item-price"><%= item.product_price %></p>
                             </div>
 
                             <div>
@@ -58,11 +58,11 @@
                     <article class="resumen__cart-container">
                         <div class="resumen__cart-line">
                             <p>CANTIDAD DE ELEMENTOS</p>
-                            <p>3</p>
+                            <p id="cant-items-cart"></p>
                         </div>
                         <div class="resumen__cart-line">
                             <p>SUBTOTAL</p>
-                            <p>$1799.99</p>
+                            <p id="subtotal"></p>
                         </div>
                         <div class="resumen__cart-line">
                             <p>ENVIO</p>
@@ -82,7 +82,7 @@
             <%- include ('../partials/footer') %>
 
                 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-                <script src="../../js/item.js"></script>
+              
                 <script src="../../js/cart.js"></script>
     </body>
 
