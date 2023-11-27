@@ -14,8 +14,14 @@ const authControllers = {
         const {email, password} = req.body;
         let userToLogin = userService.getUserByEmailAndPass(email, password);
         if (userToLogin) {
-            req.session.userLogged = userToLogin;
-            res.redirect('/');
+            if(email == 'admin@gmail.com'){
+                req.session.userLogged = userToLogin;
+                return res.redirect('/admin');
+            }else{
+                req.session.userLogged = userToLogin;
+                return res.redirect('/');
+            }
+          
         } else {
             res.render('auth/login', {
                 errors: {

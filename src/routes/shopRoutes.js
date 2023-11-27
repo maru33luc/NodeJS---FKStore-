@@ -13,7 +13,7 @@ router.get('/cart', shopControllers.cart);
 
 router.post('/cart', shopControllers.processCheckout);
 
-
+router.get('/apply-filters', shopControllers.applyFilters);
 
 
 

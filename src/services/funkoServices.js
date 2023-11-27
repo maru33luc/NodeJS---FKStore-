@@ -36,9 +36,58 @@ module.exports = {
     getFunkosByLicenceAndCategory: (licence, category) => {
         return funkos.filter(funko => funko.licence_name == licence && funko.category_name == category);
     },
-    getFunkosByName : (name) => {
+    getFunkosByName: (name) => {
         return funkos.filter(funko => funko.product_name.toLowerCase().includes(name.toLowerCase()));
-    }
+    },
+    ordenarFunkosByPriceAsc: () => {
+        return funkos.sort((a, b) => a.product_price - b.product_price);
+    },
+    ordenarFunkosByPriceDesc: () => {
+        return funkos.sort((a, b) => b.product_price - a.product_price);
+    },
+    ordenarFunkosByNameAsc: () => {
+        return funkos.sort((a, b) => {
+            if (a.product_name < b.product_name) {
+                return -1;
+            }
+            if (a.product_name > b.product_name) {
+                return 1;
+            }
+            return 0;
+        });
+    },
+    ordenarFunkosByNameDesc: () => {
+        return funkos.sort((a, b) => {
+            if (a.product_name > b.product_name) {
+                return -1;
+            }
+            if (a.product_name < b.product_name) {
+                return 1;
+            }
+            return 0;
+        });
+    },
+    filtrarYOrdenarFunkos: (funkos, minPrice, maxPrice, ordenarPor) => {
+        // Filtra por rango de precios
+        const funkosFiltrados = funkos.filter(funko => {
+            const price = parseFloat(funko.product_price);
+            return price >= minPrice && price <= maxPrice;
+        });
 
+        // Ordena según la opción seleccionada
+        switch (ordenarPor) {
+            case 'asc':
+                return funkosFiltrados.sort((a, b) => a.product_price - b.product_price);
+            case 'desc':
+                return funkosFiltrados.sort((a, b) => b.product_price - a.product_price);
+            case 'az':
+                return funkosFiltrados.sort((a, b) => a.product_name.localeCompare(b.product_name));
+            case 'za':
+                return funkosFiltrados.sort((a, b) => b.product_name.localeCompare(a.product_name));
+            default:
+                return funkosFiltrados;
+        }
+    }
+    
 
 }

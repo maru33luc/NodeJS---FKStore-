@@ -6,8 +6,24 @@ const shopControllers = {
     index: (req, res) => {
         const user = req.session.userLogged;
         const funkos = funkoService.getFunkos();
-        res.render('shop/shop', { funkos: funkos, user: user });
+        res.render('shop/shop', { funkos: funkos, user: user }); 
+    },
+    applyFilters: (req, res) => {
         
+        const user = req.session.userLogged;
+        const minPrice = parseFloat(req.query.minPrice) || 0;
+        const maxPrice = parseFloat(req.query.maxPrice) || Infinity;
+        const ordenarPor = req.query.ordenarPor || 'asc';
+
+        // Obtén los Funkos desde el servicio
+        const funkos = funkoService.getFunkos();
+
+        // Filtra y ordena los Funkos según los parámetros
+        const funkosFiltradosYOrdenados = funkoService.filtrarYOrdenarFunkos(funkos, minPrice, maxPrice, ordenarPor);
+
+        // Devuelve los Funkos filtrados y ordenados como JSON
+        res.render('shop/shop', { funkos: funkosFiltradosYOrdenados,
+             user: user });
     },
     detail: (req, res) => {
         const user = req.session.userLogged;

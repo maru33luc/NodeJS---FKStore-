@@ -1,6 +1,8 @@
+
+// -----------------VALIDAR ENTRADAS RANGO PRECIOS-----------------
+
 const minPriceInput = document.getElementById('min-price');
 const maxPriceInput = document.getElementById('max-price');
-const buscar = document.getElementById('buscar');
 
 minPriceInput.addEventListener('change', function () {
     validarYFormatearPrecios(minPriceInput);
@@ -10,7 +12,6 @@ maxPriceInput.addEventListener('change', function () {
 });
 
 function validarYFormatearPrecios(input) {
-
     if (isNaN(input.value)) {
         alert('Por favor, ingrese valores numéricos válidos para los precios.');
         return;
@@ -24,13 +25,63 @@ function validarYFormatearPrecios(input) {
     input.value = minPriceFormatted;
 }
 
+// -----------------FILTRADOS-------------------------
+
+const select = document.getElementById('shop__aside-select');
+const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
+
+btnAplicarFiltro.addEventListener('click', function () {
+    const minPrice = minPriceInput.value;
+    const maxPrice = maxPriceInput.value;
+    const ordenarPor = select.value;
+    console.log(ordenarPor);
+
+    const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}`;
+
+    window.location.href = url;
+});
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
+    });
+    // Función para obtener parámetros de la URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) {
+            
+            return null;
+        }
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 
+    // Leer parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const minPriceParam = urlParams.get('minPrice');
+    const maxPriceParam = urlParams.get('maxPrice');
+    const ordenarPorParam = urlParams.get('ordenarPor');
+    
+    if (!ordenarPorParam) {
+        ordenarPorParam = 'az';
+    }
 
+    // Establecer valores en el formulario
+    minPriceInput.value = minPriceParam || '';
+    maxPriceInput.value = maxPriceParam || '';
+    select.value = ordenarPorParam || '';
+});
 
+const btnLimpiarFiltro = document.getElementById('btn-limpiar-filtro');
 
-
+btnLimpiarFiltro.addEventListener('click', function () {
+    window.location.href = '/shop';
+});
 
 
 // --------------Pagination----------------
@@ -43,7 +94,7 @@ const nextPage = document.getElementById('next-page');
 const allItems = document.querySelectorAll('.card-item');
 const totalItems = allItems.length;
 
-let currentPage = 0; 
+let currentPage = 0;
 
 
 function showPage(pageNumber) {
@@ -67,7 +118,7 @@ function showPage(pageNumber) {
             link.classList.remove('active');
         }
     });
-    console.log(pageNumber);
+
 }
 
 function goToPage(pageNumber) {
@@ -80,7 +131,7 @@ function goToPage(pageNumber) {
     }
 
     showPage(currentPage);
-   
+
 }
 
 showPage(currentPage);
@@ -89,7 +140,7 @@ pageLinks.forEach((link, index) => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         goToPage(index);
-        
+
     });
 });
 

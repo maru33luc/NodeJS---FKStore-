@@ -200,6 +200,29 @@ button.aplicarFiltroBtn:hover {
     background-color: #333;
 }
 
+.limpiarFiltroBtn{
+    background: var(--secondary);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-self: center;
+}
+
+.limpiarFiltroBtn:hover {
+    background-color: #333;
+
+}
+
 @media screen and (max-width: 550px) {
     button.aplicarFiltroBtn {
         align-self: flex-start;
