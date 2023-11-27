@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const cartFilePath = path.join(__dirname, '../data/cart.js');
+const cartFilePath = path.join(__dirname, '../../data/carts.js');
+const carts = JSON.parse(fs.readFileSync(cartFilePath, 'utf-8'));
 
 module.exports = {
     createCart : (userId) => {

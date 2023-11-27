@@ -1,5 +1,5 @@
 const funkoService = require('../services/funkoServices');
-
+const cartService = require('../services/cartServices');
 
 const shopControllers = {
     
@@ -39,23 +39,14 @@ const shopControllers = {
     },
     cart: (req, res) => {
         const user = req.session.userLogged;
-        const funkos = [ {
-            "product_id": 9,
-    "licence_name": "Harry Potter",
-    "category_name": "Funko Pop!",
-    "product_name": "Hermione Granger",
-    "product_description": "Funko coleccionable del personaje de Hermione Granger",
-    "product_sku": "AJSHDJ3333",
-    "product_price": 100.99,
-    "product_stock": 20,
-    "dues": 1,
-    "img-front": "https://www.lamarquezone.fr/images/Image/xfk5860.jpg",
-    "img-back": "https://i.pinimg.com/736x/af/6e/93/af6e938baef2bd088f007a3df720f0b4.jpg"
-
-        }
-        
-        ];
-        res.render('shop/cart', { funkos: funkos, user: user });
+        const items = cartService.getCart();    
+        const funkosItems = [];
+        items.items.forEach(item => {
+            const funko = funkoService.getFunko(item.id);
+            funko.quantity = item.quantity;
+            funkosItems.push(funko);
+        });
+        res.render('shop/cart', { funkos: funkosItems, user: user });
     },
     checkout: (req, res) => {
         res.send('Route for go to checkout page');

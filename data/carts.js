@@ -6,7 +6,7 @@
                 "id": 1,
                 "name": "Hermione Granger",
                 "price": 100.99,
-                "quantity": 1
+                "quantity": 2
             },
             {
                 "id": 2,
