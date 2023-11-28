@@ -12,7 +12,6 @@ const shopControllers = {
     applyFilters: (req, res) => {
 
         const user = req.session.userLogged;
-        console.log(user);
         const minPrice = parseFloat(req.query.minPrice) || 0;
         const maxPrice = parseFloat(req.query.maxPrice) || Infinity;
         const ordenarPor = req.query.ordenarPor || 'asc';
@@ -45,7 +44,6 @@ const shopControllers = {
     },
     cart: (req, res) => {
         const user = req.session.userLogged;
-        console.log(user);
         if(user){
             const items = cartService.getCart(user.id);
             if(items){
@@ -87,7 +85,6 @@ const shopControllers = {
         const id = req.query.id;
         const quantity = req.query.quantity;
         const cart = cartService.getCart(userId);
-        console.log(cart);
         if (cart) {
             const item = cart.items.find(item => item.id == id);
             if (item) {

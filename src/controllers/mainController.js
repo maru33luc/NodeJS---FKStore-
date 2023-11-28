@@ -8,7 +8,8 @@ const mainControllers = {
         res.render('index', {funkos: funkos, user: user});
     },
     contact: (req, res) => {
-        res.render('shop/contact');
+        user = req.session.userLogged;
+        res.render('shop/contact', {user: user} );
     },
     about: (req, res) => {
         res.send('Route for About View');
