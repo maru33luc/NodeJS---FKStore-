@@ -1,7 +1,5 @@
 # NodeJS---FKStore-
 
-Aquí está el readme en lenguaje md que me pediste:
-
 # Proyecto de NodeJs de una tienda de Funkos
 
 Este es un proyecto de NodeJs que consiste en crear una tienda de Funkos para el curso de Codo a Codo 2023. Los Funkos son figuras coleccionables de personajes de películas, series, videojuegos, cómics y otros medios de entretenimiento. El objetivo del proyecto es desarrollar una aplicación web que permita a los usuarios ver, comprar y vender Funkos de forma fácil y segura.
@@ -23,23 +21,4 @@ Para usar la aplicación web, se deben seguir los siguientes pasos:
 - Abrir un navegador web y acceder a la dirección `http://localhost:3000` (o el puerto que se haya configurado en el archivo `.env`).
 - Registrarse o iniciar sesión con una cuenta de usuario para acceder a las funcionalidades de la aplicación web, como ver, comprar y vender Funkos.
 
-## Licencia
 
-Este proyecto está bajo la licencia MIT, que permite el uso, copia, modificación y distribución libre del código, siempre y cuando se reconozca la autoría original y se incluya una copia de la licencia.
-
-: [Funko - Wikipedia, la enciclopedia libre]
-: [Node.js]
-: [Express - Node.js web application framework]
-: [MongoDB: The most popular database for modern apps]
-: [Passport.js]
-: [Bootstrap · The most popular HTML, CSS, and JS library in the world.]
-: [Git]
-: [Cloud Application Platform | Heroku]
-: [Mocha - the fun, simple, flexible JavaScript test framework]
-: [ESLint - Pluggable JavaScript linter]
-: [GitHub - codoacodo2023/proyecto-funkos: Proyecto de NodeJs de una tienda de Funkos para el curso de Codo a Codo 2023]
-: [codoacodo2023/proyecto-funkos: Proyecto de NodeJs de una tienda de Funkos para el curso de Codo a Codo 2023 (github.com)]
-: [MIT License | Choose a License].
-
-Source: Conversation with Bing, 11/21/2023
-(1) en.wikipedia.org. https://en.wikipedia.org/wiki/README.
