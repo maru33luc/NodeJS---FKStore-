@@ -10,9 +10,6 @@ Este es un proyecto de NodeJs que consiste en crear una tienda de Funkos para el
 
 - La aplicación web está desarrollada con NodeJs, un entorno de ejecución de JavaScript que permite crear aplicaciones web escalables y de alto rendimiento.
 - La aplicación web utiliza el framework Express, que proporciona una serie de características para facilitar el desarrollo de aplicaciones web con NodeJs, como el manejo de rutas, middleware, plantillas y errores.
-- La aplicación web se conecta a una base de datos MongoDB, que es un sistema de gestión de bases de datos no relacional que almacena los datos en documentos JSON.
-- La aplicación web implementa un sistema de autenticación y autorización basado en Passport, que es un middleware de NodeJs que permite integrar diferentes estrategias de autenticación, como local, OAuth, JWT y otras.
-- La aplicación web cuenta con una interfaz gráfica de usuario (GUI) diseñada con Bootstrap, que es un framework de CSS que facilita la creación de páginas web responsivas y atractivas.
 - La aplicación web sigue las buenas prácticas de desarrollo, como el uso de control de versiones con Git, el despliegue en Heroku, el testing con Mocha y Chai, y el uso de ESLint para mantener un código limpio y consistente   .
 
 ## Instrucciones de uso
