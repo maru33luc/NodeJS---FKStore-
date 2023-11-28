@@ -12,39 +12,34 @@ itemCart.forEach(item => {
     const quantity = item.querySelector('#quantity');
     const itemPrice = item.querySelector('#item-price');
 
-    btnAdd.addEventListener('click', () => {
+    btnAdd.addEventListener('click', (e) => {
         quantity.value++;
         total++;
         subtotal += parseFloat(itemPrice.innerHTML);
         totalCart.innerHTML = subtotal.toFixed(2);
         updateCart();
-        // // actualizar carrito en el servidor
-        // let cart = getCart();
-        // let item = cart.items.find(item => item.id === parseInt(itemPrice.dataset.id));
-        // if(item) {
-        //     item.quantity++;
-        // }
-        // updateCarrito(cart);
-
+        // actualizar carrito servidor
+        const id = e.target.dataset.itemId;
+        const userId = e.target.dataset.userId;
+        const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
+        window.location.href = url;
 
     });
 
-    btnSub.addEventListener('click', () => {
+    btnSub.addEventListener('click', (e) => {
         if (quantity.value > 1) {
             quantity.value--;
             total--;
             subtotal -= parseFloat(itemPrice.innerHTML);
             totalCart.innerHTML = subtotal.toFixed(2);
             updateCart();
+            // actualizar carrito servidor
+            const id = e.target.dataset.itemId;
+            const userId = e.target.dataset.userId;
+            const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
+            window.location.href = url;
         }
-        // // actualizar carrito en el servidor
-        // let cart = getCart();
-        // let item = cart.items.find(item => item.id === parseInt(itemPrice.dataset.id));
-        // if(item) {
-        //     item.quantity--;
-        // }
-        // updateCarrito(cart);
-        
+
     });
 
     // Calcular subtotal para cada artículo
@@ -54,15 +49,19 @@ itemCart.forEach(item => {
     totalCart.innerHTML = subtotal.toFixed(2);
 });
 
-
-
-
 // Función para actualizar el resumen del carrito
 function updateCart() {
-    
+
     totalItemsCart.innerHTML = total;
     subtotalItems.innerHTML = subtotal.toFixed(2);
 }
 
 // Llama a la función para establecer los valores iniciales
 updateCart();
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
+    });
+});

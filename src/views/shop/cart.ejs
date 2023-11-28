@@ -12,7 +12,7 @@
 
                 <ul class="cart-items">
                     <% funkos.forEach(item=> { %>
-                        <li class="cart-item">
+                        <li class="cart-item" >
                             <div class="cart-item-info">
                                 <picture class="cart-item-picture">
                                     <img src="<%= item['img-front'] %>" alt="">
@@ -33,10 +33,14 @@
 
                             <div class="item-cart-quantity">
                                 <button class="item__quantity" id="substract"
+                                 data-item-id="<%= item.product_id %>"
+                                 data-user-id="<%= userId %>"
                                     >-</button>
                                 <input class="item-input" type="text" id="quantity" 
                                     value="<%= item.quantity %>" placeholder="">
-                                <button class="item__quantity" id="add"
+                                <button class="item__quantity" id="add" 
+                                data-item-id="<%= item.product_id %>"
+                                data-user-id="<%= userId %>"
                                     >+</button>
                                 
                             </div>
@@ -83,7 +87,7 @@
 
                 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
               
-                <script src="../../js/cart.js"></script>
+                <script type="module" src="../../js/cart.js"></script>
     </body>
 
 </html>
