@@ -92,10 +92,12 @@ btnAddCart.addEventListener('click', async (e) => {
        const item = await getCart(id);
        if(item && id && quantity.value > 0){
            updateCart(id, quantity.value);
+           window.location.href = `/shop/item/${id}`;
          }
          else{
             if(id && quantity.value > 0){
                 addCart(id, quantity.value);
+                window.location.href = `/shop/item/${id}`;
             }   
         }
     }else{
