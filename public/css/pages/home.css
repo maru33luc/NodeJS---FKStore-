@@ -156,7 +156,7 @@
 .slider {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 80px;
     margin: 10rem auto 50px auto!important;; 
 }
 

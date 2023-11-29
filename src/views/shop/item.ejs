@@ -7,7 +7,9 @@
     <%- include ('../partials/header') %>
 
     <main class="main-container">
+        <%- include ('../partials/error') %>
         <section class="item">
+            
             <picture class="item__img card-item__cover">
                 <img class="card-item__img--front" src="<%= funko['img-front'] %>" alt="">
                 <img class="card-item__img--back" src="<%= funko['img-back'] %>" alt="">
@@ -22,7 +24,9 @@
                     <input class="item__input" type="text" name="quantity" id="quantity" placeholder="0" disabled>
                     <button id="add" class="item__quantity" type="button">+</button>
 
-                    <button class="item__submit btn btn--primary btn--medium " type="submit">Agregar al carrito</button>
+                    <button class="item__submit btn btn--primary btn--medium " type="submit" 
+                    id="btn-add-Cart" data-item-id="<%= funko.product_id %>"
+                    >Agregar al carrito</button>
                 </div>
                 <p class="item__promo">
                     <a href="">Ver Metodos de Pago</a> - 3 CUOTAS SIN INTERES

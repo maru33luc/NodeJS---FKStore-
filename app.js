@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+
 const crypto = require('crypto');
 const fs = require('fs');
 const mainRoutes = require('./src/routes/mainRoutes');
@@ -12,12 +13,14 @@ const path = require('path');
 const methodOverride = require('method-override');
 
 const app = express();
-const secretKey = crypto.randomBytes(32).toString('hex');
+// const secretKey = crypto.randomBytes(32).toString('hex');
+const secretKey = 'secretKey';
+
 
 app.use(session({
     secret : secretKey,
     resave : false,
-    saveUninitialized : false
+    saveUninitialized : false,
 }));
 
 

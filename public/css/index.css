@@ -35,7 +35,7 @@
 
 
 p {
-    font-size: var(--font-xsmall);
+    font-size: var(--font-small);
 }
 
 .container {
@@ -104,8 +104,15 @@ p {
 }
 
 .error-message{
+    /* color: red;
+    font-size: var(--font-large);
+    margin-top: 0.5rem;
+    text-align: center; */
+}
+
+.error-message__text{
     color: red;
-    font-size: var(--font-small);
+    font-size: var(--font-large);
     margin-top: 0.5rem;
     text-align: center;
 }

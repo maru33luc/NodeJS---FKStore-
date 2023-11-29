@@ -59,9 +59,9 @@ function updateCart() {
 // Llama a la función para establecer los valores iniciales
 updateCart();
 
-document.addEventListener('DOMContentLoaded', function () {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
-    });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     window.scrollTo({
+//         top: 0,
+//         behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
+//     });
+// });
