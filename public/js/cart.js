@@ -1,3 +1,5 @@
+import * as cartLocalService from './cartLocalService.js';
+
 
 const itemCart = document.querySelectorAll('.cart-item');
 let subtotal = 0;
@@ -6,11 +8,13 @@ const totalCart = document.getElementById('total-cart');
 const totalItemsCart = document.getElementById('cant-items-cart');
 const subtotalItems = document.getElementById('subtotal');
 
+
 itemCart.forEach(item => {
     const btnAdd = item.querySelector('#add');
     const btnSub = item.querySelector('#substract');
     const quantity = item.querySelector('#quantity');
     const itemPrice = item.querySelector('#item-price');
+    const btnDelete = item.querySelector('.cart-item-delete');
 
     btnAdd.addEventListener('click', (e) => {
         quantity.value++;
@@ -42,6 +46,23 @@ itemCart.forEach(item => {
 
     });
 
+    btnDelete.addEventListener('click', (e) => {
+        //eliminar del carrito local
+        const id = e.target.dataset.itemId;
+        const quantity = e.target.dataset.itemQuantity;
+        cartLocalService.deleteItemCart(id);
+    //    tomar la url 
+        const url = window.location.href;
+        // quitar el id del item de la url y la quantity
+        const urlSplit = url.split('&');
+        const urlSplit2 = urlSplit.filter(item => item.indexOf(id) === -1
+        && item.indexOf(quantity) === -1);
+        const urlFinal = urlSplit2.join('&');
+        // redirigir a la url sin el id del item
+        window.location.href = urlFinal;
+
+    });
+
     // Calcular subtotal para cada artículo
     const subtotalItem = parseInt(quantity.value) * parseFloat(itemPrice.innerHTML);
     subtotal += subtotalItem;
@@ -65,3 +86,37 @@ updateCart();
 //         behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
 //     });
 // });
+
+const cartBody = document.querySelector('body');
+const user = cartBody.dataset.userId;
+console.log('user', user);
+console.log(typeof user);
+
+
+if(itemCart.length === 0){
+if (user === '' || user === undefined) {
+    let url = `/shop/local?`;
+    console.log(url);
+    
+    try{
+        const res = await cartLocalService.getCartAll();
+        console.log(res);
+        res.forEach(item => {
+            const id = item.itemId;
+            const quantity = item.quantity;
+             url += `id=${id}&quantity=${quantity}`;
+            // si el indice es menor que el largo del array -1
+            if (res.indexOf(item) < res.length - 1) {
+                url += '&';
+            }
+            
+        });
+        console.log(url);
+        window.location.href = url;
+    }catch(error){
+        console.log(error);
+    }
+    
+}
+}
+   

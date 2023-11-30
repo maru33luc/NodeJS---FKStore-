@@ -4,10 +4,10 @@
 
 <%- include ('../partials/head') %>
 
-    <body>
+    <body data-user-id="<%= userId %>">
         <%- include ('../partials/header') %>
 
-            <main class="main cart-main">
+            <main class="main cart-main" >
                 <h1 class="h1">CARRITO DE COMPRAS</h1>
 
                 <ul class="cart-items">
@@ -50,7 +50,10 @@
                             </div>
 
                             <div>
-                                <img class="cart-item-delete" src="/img/icons/gg-close-o.svg" alt=""
+                                <img class="cart-item-delete" src="/img/icons/gg-close-o.svg" 
+                                data-item-id="<%= item.product_id %>"
+                                data-item-quantity="<%= item.quantity %>"
+                                alt=""
                                     >
                             </div>
                         </li>
@@ -86,7 +89,7 @@
             <%- include ('../partials/footer') %>
 
                 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-              
+                <script src="../../js/app.js"></script>
                 <script type="module" src="../../js/cart.js"></script>
     </body>
 

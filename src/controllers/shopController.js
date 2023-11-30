@@ -67,12 +67,46 @@ const shopControllers = {
                 });
             }
         }
-        else {
+       
+
+
+        else{
             res.render('shop/cart', {
-                funkos: [], user: user,
+                funkos: [], user: '',
                 userId: null
             });
+        
         }
+        
+    },
+    localCart : (req, res) =>  {
+        
+            const funkosItems = [];
+            console.log('en local cart');
+            console.log('req query', req.query);
+            const items = req.query;
+            console.log('items',items);
+            for ( let i = 0; i < items.id.length; i++) {
+
+                const funko = funkoService.getFunko(items.id[i]);
+                funko.quantity = items.quantity[i];
+                funkosItems.push(funko);
+
+
+            }
+            // items.items.forEach(item => {
+            //     const funko = funkoService.getFunko(item.id);
+            //     funko.quantity = item.quantity;
+            //     funkosItems.push(funko);
+            // });
+            console.log(funkosItems);
+            res.render('shop/cart', {
+                funkos: funkosItems, user: '',
+                userId: null
+            });
+            
+          
+
     },
     checkout: (req, res) => {
         res.send('Route for go to checkout page');
