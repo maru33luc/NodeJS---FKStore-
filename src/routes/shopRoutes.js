@@ -8,7 +8,7 @@ router.get('/', shopControllers.index);
 router.get('/item/:id/', shopControllers.detail);
 router.get('/item/:id/add', shopControllers.addItemCart);
 
-// router.post('/item/:id/add', shopControllers.addCart);
+
 
 
 router.get('/cart', shopControllers.cart);
