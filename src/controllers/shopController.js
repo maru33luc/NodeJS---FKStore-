@@ -19,12 +19,14 @@ const shopControllers = {
         const minPrice = parseFloat(req.query.minPrice) || 0;
         const maxPrice = parseFloat(req.query.maxPrice) || Infinity;
         const ordenarPor = req.query.ordenarPor || 'asc';
+        const licencia = req.query.licence || '';
+        const categoria = req.query.category || '';
 
         // Obtén los Funkos desde el servicio
         const funkos = funkoService.getFunkos();
 
         // Filtra y ordena los Funkos según los parámetros
-        const funkosFiltradosYOrdenados = funkoService.filtrarYOrdenarFunkos(funkos, minPrice, maxPrice, ordenarPor);
+        const funkosFiltradosYOrdenados = funkoService.filtrarYOrdenarFunkos(funkos, minPrice, maxPrice, ordenarPor, licencia, categoria);
 
         // Devuelve los Funkos filtrados y ordenados como JSON
         res.render('shop/shop', {

@@ -67,13 +67,20 @@ module.exports = {
             return 0;
         });
     },
-    filtrarYOrdenarFunkos: (funkos, minPrice, maxPrice, ordenarPor) => {
-        // Filtra por rango de precios
-        const funkosFiltrados = funkos.filter(funko => {
-            const price = parseFloat(funko.product_price);
-            return price >= minPrice && price <= maxPrice;
-        });
-
+    filtrarYOrdenarFunkos: (funkos, minPrice, maxPrice, ordenarPor, licence, category) => {
+        let funkosFiltrados = funkos;
+        if(category != ''){
+            funkosFiltrados = funkosFiltrados.filter (funko => funko.category_name==category);
+        }
+        if( licence != ''){
+            funkosFiltrados = funkosFiltrados.filter (funko => funko.licence_name==licence);
+        }
+        if(minPrice != ''){
+            funkosFiltrados = funkosFiltrados.filter (funko => funko.product_price>=minPrice);
+        }
+        if(maxPrice != ''){
+            funkosFiltrados = funkosFiltrados.filter (funko => funko.product_price<=maxPrice);
+        }
         // Ordena según la opción seleccionada
         switch (ordenarPor) {
             case 'asc':
@@ -88,6 +95,4 @@ module.exports = {
                 return funkosFiltrados;
         }
     }
-    
-
 }

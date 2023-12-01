@@ -4,10 +4,12 @@ const funkos = JSON.parse(funkoJson);
 
 const adminControllers = {
     home: (req, res) => {
-        res.render('admin/admin', {funkos: funkos});
+        const user = req.session.userLogged;
+        res.render('admin/admin', {funkos: funkos, user: user});
     },
     create: (req, res) => {
-        res.render('admin/create');
+        const user = req.session.userLogged;
+        res.render('admin/create', {user: user});
     },
     store: (req, res) => {
         const funko = req.body;
@@ -20,13 +22,14 @@ const adminControllers = {
         res.send('Route for add the current item to the shop cart');
     },
     getEdit: (req, res) => {
+        const user = req.session.userLogged;
         const id = req.params.id;
         const funko = funkos.find(f => f.product_id == id);
         if(!funko) {
             return res.send('No se encontró el funko que estás buscando');
         }
         else{
-            res.render('admin/edit', {funko: funko});
+            res.render('admin/edit', {funko: funko, user: user});
         }
     },
     postEdit: (req, res) => {
@@ -46,9 +49,6 @@ const adminControllers = {
             });
         }
     },
-    
-    
-    
     delete: (req, res) => {
         const id = req.params.id;
         const funko = funkos.find(f => f.product_id == id);
@@ -59,8 +59,7 @@ const adminControllers = {
             const funkoDelete = funkos.filter(f => f.product_id != id);
             fs.writeFileSync(__dirname + '../../../data/db.js', JSON.stringify(funkoDelete, null, ' '));
             res.redirect('/admin');
-        }
-        
+        }   
     }
 }
 
