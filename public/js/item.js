@@ -21,7 +21,8 @@ substract.addEventListener('click', () => {
 const btnAddCart = document.querySelector('#btn-add-Cart');
 
 btnAddCart.addEventListener('click', async (e) => {
-    if(e.target.dataset.userId == null){
+    console.log('userId',e.target.dataset.userId);
+    if(e.target.dataset.userId == null || e.target.dataset.userId == ''){
        const id = e.target.dataset.itemId;
        const item = await cartLocalService.getCart(id);
        if(item && id && quantity.value > 0){
@@ -37,7 +38,7 @@ btnAddCart.addEventListener('click', async (e) => {
     }else{
         const id = e.target.dataset.itemId;
     const userId = e.target.dataset.userId;
-    const url = `/shop/item/${id}/add?quantity=${quantity.value}`;
+    const url = `/shop/addItem?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
     window.location.href = url;  
     }
     

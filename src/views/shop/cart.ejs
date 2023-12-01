@@ -4,7 +4,9 @@
 
 <%- include ('../partials/head') %>
 
-    <body data-user-id="<%= userId %>">
+    <body <% if (user) { %>
+        data-user-id="<%= user.id %>"
+    <% } %>>
         <%- include ('../partials/header') %>
 
             <main class="main cart-main" >
@@ -34,13 +36,17 @@
                             <div class="item-cart-quantity">
                                 <button class="item__quantity" id="substract"
                                  data-item-id="<%= item.product_id %>"
-                                 data-user-id="<%= userId %>"
+                                 <% if (user) { %>
+                                    data-user-id="<%= user.id %>"
+                                <% } %>
                                     >-</button>
                                 <input class="item-input" type="text" id="quantity" 
                                     value="<%= item.quantity %>" placeholder="">
                                 <button class="item__quantity" id="add" 
                                 data-item-id="<%= item.product_id %>"
-                                data-user-id="<%= userId %>"
+                                <% if (user) { %>
+                                    data-user-id="<%= user.id %>"
+                                <% } %>
                                     >+</button>
                                 
                             </div>
@@ -53,6 +59,9 @@
                                 <img class="cart-item-delete" src="/img/icons/gg-close-o.svg" 
                                 data-item-id="<%= item.product_id %>"
                                 data-item-quantity="<%= item.quantity %>"
+                                <% if (user) { %>
+                                    data-user-id="<%= user.id %>"
+                                <% } %>
                                 alt="">
                             </div>
                         </li>

@@ -1,13 +1,11 @@
 import * as cartLocalService from './cartLocalService.js';
 
-
 const itemCart = document.querySelectorAll('.cart-item');
 let subtotal = 0;
 let total = 0;
 const totalCart = document.getElementById('total-cart');
 const totalItemsCart = document.getElementById('cant-items-cart');
 const subtotalItems = document.getElementById('subtotal');
-
 
 itemCart.forEach(item => {
     const btnAdd = item.querySelector('#add');
@@ -47,6 +45,8 @@ itemCart.forEach(item => {
     });
 
     btnDelete.addEventListener('click', (e) => {
+        const user = cartBody.dataset.userId;
+        if(user === '' || user === undefined){
         //eliminar del carrito local
         const id = e.target.dataset.itemId;
         const quantity = e.target.dataset.itemQuantity;
@@ -71,10 +71,17 @@ itemCart.forEach(item => {
                 filteredArray.push(currentItem);
             }
         }
-
         // unir el array en un string
         const urlFinalString = urlArray[0] + '?' + filteredArray.join('&');
         window.location.href = urlFinalString;
+    }else{
+        //eliminar del carrito servidor
+        const id = e.target.dataset.itemId;
+        const userId = e.target.dataset.userId;
+        console.log(userId);
+        const url = `/shop/add?idUser=${userId}&id=${id}&quantity=0`;
+        window.location.href = url;
+    }
 
     });
 

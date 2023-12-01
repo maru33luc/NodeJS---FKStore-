@@ -26,6 +26,9 @@
 
                     <button class="item__submit btn btn--primary btn--medium " type="submit" 
                     id="btn-add-Cart" data-item-id="<%= funko.product_id %>"
+                    <% if (user) { %>
+                        data-user-id="<%= user.id %>"
+                    <% } %>
                     >Agregar al carrito</button>
                 </div>
                 <p class="item__promo">
