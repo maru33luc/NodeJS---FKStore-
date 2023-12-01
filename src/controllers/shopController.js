@@ -7,10 +7,13 @@ const shopControllers = {
     index: (req, res) => {
         const user = req.session.userLogged;
         const funkos = funkoService.getFunkos();
-        res.render('shop/shop', { funkos: funkos, user: user });
+        const error = [];
+        res.render('shop/shop', { funkos: funkos, user: user,
+            error: error });
     },
     applyFilters: (req, res) => {
         const user = req.session.userLogged;
+        const error = [];
         const minPrice = parseFloat(req.query.minPrice) || 0;
         const maxPrice = parseFloat(req.query.maxPrice) || Infinity;
         const ordenarPor = req.query.ordenarPor || 'asc';
@@ -24,7 +27,7 @@ const shopControllers = {
         // Devuelve los Funkos filtrados y ordenados como JSON
         res.render('shop/shop', {
             funkos: funkosFiltradosYOrdenados,
-            user: user
+            user: user, error: error
         });
     },
     detail: (req, res) => {
@@ -75,6 +78,12 @@ const shopControllers = {
     localCart : (req, res) =>  {  
             const funkosItems = [];
             const items = req.query;
+            const funkos = funkoService.getFunkos();
+            if(items.id === undefined) return res.render('shop/shop', {
+                funkos: funkos, user: '',
+                userId: null, error: 'No hay productos en el carrito'
+            });
+
             for ( let i = 0; i < items.id.length; i++) {
                 const funko = funkoService.getFunko(items.id[i]);
                 funko.quantity = items.quantity[i];
@@ -187,8 +196,6 @@ const shopControllers = {
         }
     }
 }
-
-
 
 module.exports = shopControllers;
 
