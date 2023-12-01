@@ -111,54 +111,57 @@ const shopControllers = {
         const funko = funkoService.getFunko(id);
         const quantity = req.query.quantity;
         const cart = cartService.getCart(userId);
-        if (cart) {
-            const item = cart.items.find(item => item.id == id);
-            if (item) {
-                if (quantity === '0') {
-                    cart.items = cart.items.filter(item => item.id !== id);
-                } else {
+        if (userId) {
+            if (cart) {
+                const item = cart.items.find(item => item.id == id);
+                if (item) {
+                    if (quantity === '0') {
+                        cart.items = cart.items.filter(item => item.id !== id);
+                    } else {
+                        item.quantity = parseInt(quantity);
+                    }
+                }
+                else {
+                    cart.items.push({ id: id, quantity: parseInt(quantity) });
+                }
+                cartService.updateCart(userId, cart);
+                const items = cartService.getCart(userId);
+                const funkosItems = [];
+                items.items.forEach(item => {
+                    const funko = funkoService.getFunko(item.id);
+                    funko.quantity = item.quantity;
+                    funkosItems.push(funko);
+                });
+                res.render('shop/cart', {
+                    funkos: funkosItems, user: user,
+                    userId: userId, error: error, funko: funko
+                });
+            } else {
+                const newCart = cartService.createCart(userId);
+                const item = newCart.items.find(item => item.id === id);
+                if (item) {
                     item.quantity = parseInt(quantity);
                 }
+                else {
+                    newCart.items.push({ id: id, quantity: parseInt(quantity) });
+                }
+                cartService.updateCart(userId, newCart);
+                const items = cartService.getCart(userId);
+                const funkosItems = [];
+                items.items.forEach(item => {
+                    const funko = funkoService.getFunko(item.id);
+                    funko.quantity = item.quantity;
+                    funkosItems.push(funko);
+                });
+                res.render('shop/item', {
+                    funkos: funkosItems, user: user,
+                    userId: userId, error: error, funko: funko
+                });
             }
-            else {
-                cart.items.push({ id: id, quantity: parseInt(quantity) });
-            }
-            cartService.updateCart(userId, cart);
-            const items = cartService.getCart(userId);
-            const funkosItems = [];
-            items.items.forEach(item => {
-                const funko = funkoService.getFunko(item.id);
-                funko.quantity = item.quantity;
-                funkosItems.push(funko);
-            });
-            res.render('shop/cart', {
-                funkos: funkosItems, user: user,
-                userId: userId, error: error, funko: funko
-            });
-        } else {
-            const newCart = cartService.createCart(userId);
-            const item = newCart.items.find(item => item.id === id);
-            if (item) {
-                item.quantity = parseInt(quantity);
-            }
-            else {
-                newCart.items.push({ id: id, quantity: parseInt(quantity) });
-            }
-            cartService.updateCart(userId, newCart);
-            const items = cartService.getCart(userId);
-            const funkosItems = [];
-            items.items.forEach(item => {
-                const funko = funkoService.getFunko(item.id);
-                funko.quantity = item.quantity;
-                funkosItems.push(funko);
-            });
-            res.render('shop/item', {
-                funkos: funkosItems, user: user,
-                userId: userId, error: error, funko: funko
-            });
         }
+
     },
-    addItemCart : (req, res) => {
+    addItemCart: (req, res) => {
         // agrega funkos al carrito para usuarios logueados desde vista item
         user = req.session.userLogged;
         let error = undefined;
@@ -173,7 +176,7 @@ const shopControllers = {
                 if (quantity === '0') {
                     cart.items = cart.items.filter(item => item.id !== id);
                 } else {
-                    item.quantity = parseInt(quantity);
+                    error = 'El producto ya se encuentra en el carrito';
                 }
             }
             else {

@@ -6,6 +6,8 @@ let total = 0;
 const totalCart = document.getElementById('total-cart');
 const totalItemsCart = document.getElementById('cant-items-cart');
 const subtotalItems = document.getElementById('subtotal');
+const cartBody = document.querySelector('body');
+const user = cartBody.dataset.userId;
 
 itemCart.forEach(item => {
     const btnAdd = item.querySelector('#add');
@@ -14,17 +16,23 @@ itemCart.forEach(item => {
     const itemPrice = item.querySelector('#item-price');
     const btnDelete = item.querySelector('.cart-item-delete');
 
+
     btnAdd.addEventListener('click', (e) => {
+
         quantity.value++;
         total++;
         subtotal += parseFloat(itemPrice.innerHTML);
         totalCart.innerHTML = subtotal.toFixed(2);
         updateCart();
         // actualizar carrito servidor
+
         const id = e.target.dataset.itemId;
         const userId = e.target.dataset.userId;
-        const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
-        window.location.href = url;
+        if (user) {
+            const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
+            window.location.href = url;
+        }
+
 
     });
 
@@ -38,49 +46,52 @@ itemCart.forEach(item => {
             // actualizar carrito servidor
             const id = e.target.dataset.itemId;
             const userId = e.target.dataset.userId;
-            const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
-            window.location.href = url;
+            if (user) {
+                const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
+                window.location.href = url;
+            }
+
         }
 
     });
 
     btnDelete.addEventListener('click', (e) => {
         const user = cartBody.dataset.userId;
-        if(user === '' || user === undefined){
-        //eliminar del carrito local
-        const id = e.target.dataset.itemId;
-        const quantity = e.target.dataset.itemQuantity;
-        cartLocalService.deleteItemCart(id);
-        //    tomar la url 
-        const url = window.location.href;
-        // eliminar el id de la url y la cantidad
-        const urlArray = url.split('?');
-        const urlArray2 = urlArray[1].split('&');
+        if (user === '' || user === undefined) {
+            //eliminar del carrito local
+            const id = e.target.dataset.itemId;
+            const quantity = e.target.dataset.itemQuantity;
+            cartLocalService.deleteItemCart(id);
+            //    tomar la url 
+            const url = window.location.href;
+            // eliminar el id de la url y la cantidad
+            const urlArray = url.split('?');
+            const urlArray2 = urlArray[1].split('&');
 
-        const filteredArray = [];
-        for (let i = 0; i < urlArray2.length; i++) {
-            const currentItem = urlArray2[i];
-            const [key, value] = currentItem.split('=');
+            const filteredArray = [];
+            for (let i = 0; i < urlArray2.length; i++) {
+                const currentItem = urlArray2[i];
+                const [key, value] = currentItem.split('=');
 
-            // Verificar si el elemento actual es 'id' y si el valor coincide con el id especificado
-            if (key === 'id' && value === id) {
-                // Saltar el siguiente elemento ('quantity')
-                i++;
-            } else {
-                // Agregar el elemento actual al nuevo array
-                filteredArray.push(currentItem);
+                // Verificar si el elemento actual es 'id' y si el valor coincide con el id especificado
+                if (key === 'id' && value === id) {
+                    // Saltar el siguiente elemento ('quantity')
+                    i++;
+                } else {
+                    // Agregar el elemento actual al nuevo array
+                    filteredArray.push(currentItem);
+                }
             }
+            // unir el array en un string
+            const urlFinalString = urlArray[0] + '?' + filteredArray.join('&');
+            window.location.href = urlFinalString;
+        } else {
+            //eliminar del carrito servidor
+            const id = e.target.dataset.itemId;
+            const userId = e.target.dataset.userId;
+            const url = `/shop/add?idUser=${userId}&id=${id}&quantity=0`;
+            window.location.href = url;
         }
-        // unir el array en un string
-        const urlFinalString = urlArray[0] + '?' + filteredArray.join('&');
-        window.location.href = urlFinalString;
-    }else{
-        //eliminar del carrito servidor
-        const id = e.target.dataset.itemId;
-        const userId = e.target.dataset.userId;
-        const url = `/shop/add?idUser=${userId}&id=${id}&quantity=0`;
-        window.location.href = url;
-    }
 
     });
 
@@ -101,8 +112,7 @@ function updateCart() {
 // Llama a la función para establecer los valores iniciales
 updateCart();
 
-const cartBody = document.querySelector('body');
-const user = cartBody.dataset.userId;
+
 
 if (itemCart.length === 0) {
     if (user === '' || user === undefined) {
