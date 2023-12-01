@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const adminControllers = require('../controllers/adminController');
+const adminAuth = require('../middlewares/adminAuth.js');
 
-router.get('/', adminControllers.home);
+router.get('/', adminAuth,  adminControllers.home);
 
 router.get('/create', adminControllers.create);
 

@@ -16,24 +16,19 @@ itemCart.forEach(item => {
     const itemPrice = item.querySelector('#item-price');
     const btnDelete = item.querySelector('.cart-item-delete');
 
-
     btnAdd.addEventListener('click', (e) => {
-
         quantity.value++;
         total++;
         subtotal += parseFloat(itemPrice.innerHTML);
         totalCart.innerHTML = subtotal.toFixed(2);
         updateCart();
         // actualizar carrito servidor
-
         const id = e.target.dataset.itemId;
         const userId = e.target.dataset.userId;
         if (user) {
             const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
             window.location.href = url;
         }
-
-
     });
 
     btnSub.addEventListener('click', (e) => {
@@ -50,9 +45,7 @@ itemCart.forEach(item => {
                 const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
                 window.location.href = url;
             }
-
         }
-
     });
 
     btnDelete.addEventListener('click', (e) => {
@@ -92,7 +85,6 @@ itemCart.forEach(item => {
             const url = `/shop/add?idUser=${userId}&id=${id}&quantity=0`;
             window.location.href = url;
         }
-
     });
 
     // Calcular subtotal para cada artículo
@@ -104,7 +96,6 @@ itemCart.forEach(item => {
 
 // Función para actualizar el resumen del carrito
 function updateCart() {
-
     totalItemsCart.innerHTML = total;
     subtotalItems.innerHTML = subtotal.toFixed(2);
 }
@@ -112,12 +103,9 @@ function updateCart() {
 // Llama a la función para establecer los valores iniciales
 updateCart();
 
-
-
 if (itemCart.length === 0) {
     if (user === '' || user === undefined) {
         let url = `/shop/local?`;
-
         try {
             const res = await cartLocalService.getCartAll();
             res.forEach(item => {
@@ -128,13 +116,11 @@ if (itemCart.length === 0) {
                 if (res.indexOf(item) < res.length - 1) {
                     url += '&';
                 }
-
             });
             window.location.href = url;
         } catch (error) {
             console.log(error);
         }
-
     }
 }
 

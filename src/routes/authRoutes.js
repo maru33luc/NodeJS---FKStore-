@@ -1,14 +1,15 @@
 const express = require('express');
 const validator = require('../middlewares/validator');
+const ensureAuthenticated = require('../middlewares/ensureAuthenticated.js');
 
 const router = express.Router();
 const authControllers = require('../controllers/authController');
 
-router.get('/login', authControllers.login);
+router.get('/login',ensureAuthenticated , authControllers.login);
 
 router.post('/login', authControllers.processLogin);
 
-router.get('/register', authControllers.register);
+router.get('/register',ensureAuthenticated , authControllers.register);
 
 router.post('/register', validator.validateRegistration, validator.     handleValidationErrors,
     authControllers.processRegister);

@@ -30,7 +30,6 @@ btnAddCart.addEventListener('click', async (e) => {
                 error.innerHTML = 'El producto ya se encuentra en el carrito';
             }
         }
-
         else if (item && id && quantity.value > 0) {
             cartLocalService.updateCart(id, quantity.value);
             window.location.href = `/shop/item/${id}`;
