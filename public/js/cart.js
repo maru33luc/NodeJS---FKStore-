@@ -78,7 +78,6 @@ itemCart.forEach(item => {
         //eliminar del carrito servidor
         const id = e.target.dataset.itemId;
         const userId = e.target.dataset.userId;
-        console.log(userId);
         const url = `/shop/add?idUser=${userId}&id=${id}&quantity=0`;
         window.location.href = url;
     }

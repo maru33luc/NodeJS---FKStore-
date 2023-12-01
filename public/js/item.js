@@ -21,7 +21,6 @@ substract.addEventListener('click', () => {
 const btnAddCart = document.querySelector('#btn-add-Cart');
 
 btnAddCart.addEventListener('click', async (e) => {
-    console.log('userId',e.target.dataset.userId);
     if(e.target.dataset.userId == null || e.target.dataset.userId == ''){
        const id = e.target.dataset.itemId;
        const item = await cartLocalService.getCart(id);

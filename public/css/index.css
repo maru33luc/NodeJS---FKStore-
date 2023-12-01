@@ -104,10 +104,10 @@ p {
 }
 
 .error-message{
-    /* color: red;
-    font-size: var(--font-large);
+    color: red;
+    font-size: var(--font-medium);
     margin-top: 0.5rem;
-    text-align: center; */
+    text-align: center;
 }
 
 .error-message__text{

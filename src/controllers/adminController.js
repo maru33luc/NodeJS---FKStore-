@@ -32,8 +32,6 @@ const adminControllers = {
     postEdit: (req, res) => {
         const id = req.params.id;
         const index = funkos.findIndex(f => f.product_id == id);
-        console.log('hola');
-        console.log(req.body);
         if (index == -1) {
             return res.send('No se encontró el funko que estás buscando');
         } else {

@@ -34,7 +34,6 @@ btnAplicarFiltro.addEventListener('click', function () {
     const minPrice = minPriceInput.value;
     const maxPrice = maxPriceInput.value;
     const ordenarPor = select.value;
-    console.log(ordenarPor);
 
     const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}`;
 
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const minPriceParam = urlParams.get('minPrice');
     const maxPriceParam = urlParams.get('maxPrice');
-    const ordenarPorParam = urlParams.get('ordenarPor');
+    let ordenarPorParam = urlParams.get('ordenarPor');
     
     if (!ordenarPorParam) {
         ordenarPorParam = 'az';

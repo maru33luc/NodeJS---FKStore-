@@ -10,6 +10,9 @@ module.exports = {
             userId: userId,
             items: []
         }
+        carts.push(cart);
+        fs.writeFileSync(cartFilePath, JSON.stringify(carts, null, ' '));
+        return cart;
     },
     updateCart : (id, newCart) => {
         const index = carts.findIndex(cart => cart.userId === id);
@@ -17,7 +20,7 @@ module.exports = {
         fs.writeFileSync(cartFilePath, JSON.stringify(carts, null, ' '));
     },
     getCart : (id) => {
-        return carts.find(cart => cart.userId === id);
+        return carts.find(cart => cart.userId == id);
     },
     deleteCart : (id) => {
         const index = carts.findIndex(cart => cart.userId === id);
