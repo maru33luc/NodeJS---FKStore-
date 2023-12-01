@@ -53,22 +53,10 @@ itemCart.forEach(item => {
         cartLocalService.deleteItemCart(id);
         //    tomar la url 
         const url = window.location.href;
-        console.log(url);
         // eliminar el id de la url y la cantidad
         const urlArray = url.split('?');
-        console.log(urlArray);
         const urlArray2 = urlArray[1].split('&');
-        console.log(urlArray2);
 
-
-        // urlArray2.map((item, index) => {
-        //     for ( let i = 0; i < urlArray2.length; i++) {
-        //         if (item === `id=${id}`) {
-        //             console.log(item);
-        //             urlArray2.splice(i, 1);
-        //         }
-        //     }
-        // });
         const filteredArray = [];
         for (let i = 0; i < urlArray2.length; i++) {
             const currentItem = urlArray2[i];
@@ -84,14 +72,8 @@ itemCart.forEach(item => {
             }
         }
 
-        console.log(filteredArray);
-
-
-        console.log(urlArray2);
         // unir el array en un string
         const urlFinalString = urlArray[0] + '?' + filteredArray.join('&');
-        console.log('urlFinalString' ,urlFinalString);
-
         window.location.href = urlFinalString;
 
     });
@@ -113,27 +95,15 @@ function updateCart() {
 // Llama a la función para establecer los valores iniciales
 updateCart();
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     window.scrollTo({
-//         top: 0,
-//         behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
-//     });
-// });
-
 const cartBody = document.querySelector('body');
 const user = cartBody.dataset.userId;
-console.log('user', user);
-console.log(typeof user);
-
 
 if (itemCart.length === 0) {
     if (user === '' || user === undefined) {
         let url = `/shop/local?`;
-        console.log(url);
 
         try {
             const res = await cartLocalService.getCartAll();
-            console.log(res);
             res.forEach(item => {
                 const id = item.itemId;
                 const quantity = item.quantity;
@@ -144,7 +114,6 @@ if (itemCart.length === 0) {
                 }
 
             });
-            console.log(url);
             window.location.href = url;
         } catch (error) {
             console.log(error);

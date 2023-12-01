@@ -10,7 +10,6 @@ const shopControllers = {
         res.render('shop/shop', { funkos: funkos, user: user });
     },
     applyFilters: (req, res) => {
-
         const user = req.session.userLogged;
         const minPrice = parseFloat(req.query.minPrice) || 0;
         const maxPrice = parseFloat(req.query.maxPrice) || Infinity;
@@ -54,7 +53,6 @@ const shopControllers = {
                     funko.quantity = item.quantity;
                     funkosItems.push(funko);
                 });
-
                 res.render('shop/cart', {
                     funkos: funkosItems, user: user,
                     userId: user.id
@@ -67,46 +65,25 @@ const shopControllers = {
                 });
             }
         }
-       
-
-
         else{
             res.render('shop/cart', {
                 funkos: [], user: '',
                 userId: null
             });
-        
         }
-        
     },
-    localCart : (req, res) =>  {
-        
+    localCart : (req, res) =>  {  
             const funkosItems = [];
-            console.log('en local cart');
-            console.log('req query', req.query);
             const items = req.query;
-            console.log('items',items);
             for ( let i = 0; i < items.id.length; i++) {
-
                 const funko = funkoService.getFunko(items.id[i]);
                 funko.quantity = items.quantity[i];
                 funkosItems.push(funko);
-
-
             }
-            // items.items.forEach(item => {
-            //     const funko = funkoService.getFunko(item.id);
-            //     funko.quantity = item.quantity;
-            //     funkosItems.push(funko);
-            // });
-            console.log(funkosItems);
-            res.render('shop/cart', {
+                res.render('shop/cart', {
                 funkos: funkosItems, user: '',
                 userId: null
             });
-            
-          
-
     },
     checkout: (req, res) => {
         res.send('Route for go to checkout page');
@@ -114,7 +91,6 @@ const shopControllers = {
     processCheckout: (req, res) => {
         res.send('Route for process the checkout');
     },
-
     addItemCart: (req, res) => {
         let error = undefined;
         const user = req.session.userLogged;
@@ -160,16 +136,6 @@ const shopControllers = {
                 });
             }
         }
-        // else{
-        //     error = 'Debes estar logueado para agregar productos al carrito';
-        //     res.render(`shop/item`, {
-        //         funkos: funkos, user: user,
-        //         funko: funko, error: error
-        //     });
-            
-        // }
-        
-        
     },
     addCart: (req, res) => {
         user = req.session.userLogged;
@@ -193,7 +159,6 @@ const shopControllers = {
                 funko.quantity = item.quantity;
                 funkosItems.push(funko);
             });
-
             res.render('shop/cart', {
                 funkos: funkosItems, user: user,
                 userId: userId
@@ -215,14 +180,12 @@ const shopControllers = {
                 funko.quantity = item.quantity;
                 funkosItems.push(funko);
             });
-
             res.render('shop/cart', {
                 funkos: funkosItems, user: user,
                 userId: userId
             });
         }
     }
-
 }
 
 
