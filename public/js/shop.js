@@ -28,11 +28,23 @@ function validarYFormatearPrecios(input) {
 // -----------------FILTRADOS-------------------------
 
 const checkboxes = document.querySelectorAll('.checkbox-input');
+const checkboxesLicence = document.querySelectorAll('.checkbox-input-licence');
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             // Desmarcar todos los demás checkboxes
             checkboxes.forEach(otherCheckbox => {
+                if (otherCheckbox !== checkbox) {
+                    otherCheckbox.checked = false;
+                }
+            });
+        });
+    });
+
+    checkboxesLicence.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            // Desmarcar todos los demás checkboxes
+            checkboxesLicence.forEach(otherCheckbox => {
                 if (otherCheckbox !== checkbox) {
                     otherCheckbox.checked = false;
                 }
@@ -49,36 +61,27 @@ btnAplicarFiltro.addEventListener('click', function () {
     const maxPrice = maxPriceInput.value;
     const ordenarPor = select.value;
     const buscar = btnBuscar.value;
-    const categorySelector = document.querySelector('input[name="licence"]:checked');
+    const categorySelector = document.querySelector('input[name="categoria"]:checked');
     let category = '';
     if (categorySelector){
          category = categorySelector.id;
     }
+    const licenceSelector = document.querySelector('input[name="licence"]:checked');
+    let licence = '';
+    if (licenceSelector){
+         licence = licenceSelector.id;
+    }
 
-    const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}&buscar=${buscar}&category=${category? category : ''}`;
+    const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}&buscar=${buscar}&category=${category? category : ''}&licence=${licence? licence : ''}`;
 
     window.location.href = url;
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
+        behavior: 'smooth' 
     });
-    // Función para obtener parámetros de la URL
-    // function getParameterByName(name, url) {
-    //     if (!url) url = window.location.href;
-    //     name = name.replace(/[\[\]]/g, '\\$&');
-    //     const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-    //         results = regex.exec(url);
-    //     if (!results) {
-            
-    //         return null;
-    //     }
-    //     if (!results[2]) return '';
-    //     return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    // }
 
     // Leer parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -86,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const maxPriceParam = urlParams.get('maxPrice');
     let ordenarPorParam = urlParams.get('ordenarPor');
     const buscarParam = urlParams.get('buscar');
+    const categoryParam = urlParams.get('category');
+    const licenceParam = urlParams.get('licence');
     
     if (!ordenarPorParam) {
         ordenarPorParam = 'az';
@@ -96,9 +101,17 @@ document.addEventListener('DOMContentLoaded', function () {
     maxPriceInput.value = maxPriceParam || '';
     select.value = ordenarPorParam || '';
     btnBuscar.value = buscarParam || '';
+    checkboxes.forEach(checkbox => {
+        if (checkbox.id === categoryParam) {
+            checkbox.checked = true;
+        }
+    });
+    checkboxesLicence.forEach(checkbox => {
+        if (checkbox.id === licenceParam) {
+            checkbox.checked = true;
+        }
+    });
 });
-
-
 
 // --------------Pagination----------------
 const itemsPerPage = 9;

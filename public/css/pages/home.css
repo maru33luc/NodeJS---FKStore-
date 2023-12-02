@@ -156,8 +156,8 @@
 .slider {
     display: flex;
     flex-direction: column;
-    gap: 80px;
-    margin: 10rem auto 50px auto!important;; 
+    gap: 50px;
+    margin: 6rem auto 50px auto!important;; 
 }
 
 .slider__title {
@@ -166,7 +166,7 @@
     font-weight: 700;
     line-height: 54px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
     padding: 30px 0;
     text-wrap: balance;
