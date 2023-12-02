@@ -84,9 +84,7 @@ btnLimpiarFiltro.addEventListener('click', function () {
 
 
 // --------------Pagination----------------
-
 const itemsPerPage = 9;
-const pageLinks = document.querySelectorAll('.page-link');
 const previousPage = document.getElementById('previous-page');
 const nextPage = document.getElementById('next-page');
 
@@ -95,6 +93,7 @@ const totalItems = allItems.length;
 
 let currentPage = 0;
 
+const paginationList = document.querySelector('.pag__ul');
 
 function showPage(pageNumber) {
     const startIndex = pageNumber * itemsPerPage;
@@ -109,39 +108,37 @@ function showPage(pageNumber) {
             item.style.display = 'none';
         }
     });
-
-    pageLinks.forEach((link, index) => {
-        if (index === pageNumber) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-
 }
 
 function goToPage(pageNumber) {
     if (pageNumber < 0) {
-        currentPage = 0; // No puede ser menor que 0
+        currentPage = 0;
     } else if (pageNumber >= Math.ceil(totalItems / itemsPerPage)) {
-        currentPage = Math.ceil(totalItems / itemsPerPage) - 1; // No puede ser mayor que el último índice de página
+        currentPage = Math.ceil(totalItems / itemsPerPage) - 1;
     } else {
         currentPage = pageNumber;
     }
 
     showPage(currentPage);
 
+     // Remover la clase 'active' de todos los enlaces de página
+     const dynamicPageLinks = document.querySelectorAll('.page-link');
+     dynamicPageLinks.forEach(link => {
+         link.classList.remove('active');
+     });
+ 
+     // Agregar la clase 'active' al enlace de la página actual
+     dynamicPageLinks[currentPage].classList.add('active');
+
+     window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
+    });
+
+
 }
 
 showPage(currentPage);
-
-pageLinks.forEach((link, index) => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        goToPage(index);
-
-    });
-});
 
 previousPage.addEventListener('click', (e) => {
     e.preventDefault();
@@ -152,3 +149,27 @@ nextPage.addEventListener('click', (e) => {
     e.preventDefault();
     goToPage(currentPage + 1);
 });
+
+const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+// Generar dinámicamente los enlaces de paginación
+for (let i = 1; i <= totalPages; i++) {
+    const pageLink = document.createElement('li');
+    pageLink.classList.add('page-link');
+    pageLink.innerHTML = `<a href="#">${i}</a>`;
+    paginationList.insertBefore(pageLink, nextPage);
+}
+
+// Agregar evento clic a los enlaces de página generados dinámicamente
+const dynamicPageLinks = document.querySelectorAll('.page-link');
+dynamicPageLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToPage(index);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    dynamicPageLinks[0].classList.add('active');
+}
+);

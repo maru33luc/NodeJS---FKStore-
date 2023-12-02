@@ -284,5 +284,137 @@
     "dues": 1,
     "img-front": "https://kbportugal.pt/7067-large_default/funko-pop-harry-potter-ron-weasley.jpg",
     "img-back": "https://kbportugal.pt/7068-large_default/funko-pop-harry-potter-ron-weasley.jpg"
-  }
+  },
+
+
+  {
+    "product_id": 23,
+    "licence_name": "Harry Potter",
+    "category_name": "Keychain",
+    "product_name": "Rubeus Hagrid",
+    "product_description": "Llavero funko de Rubeus Hagrid",
+    "product_sku": "HRD3333",
+    "product_price": 8000,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://th.bing.com/th/id/OIP.FUS6ViSXHW_qsxZ9gmea9QHaHa?pid=ImgDet&w=600&h=600&rs=1",
+    "img-back": "https://gamesandcomics.it/catalog/172410-large_default/harry-potter-pocket-pop-rubeus-hagrid-keychain.jpg"
+    },
+    {
+    "product_id": 24,
+    "licence_name": "Harry Potter",
+    "category_name": "Minis",
+    "product_name": "Luna LoveGood",
+    "product_description": "Funko Mini de Luna Lovegood",
+    "product_sku": "LLG3333",
+    "product_price": 20000,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/c80c604f-2101-4ac3-aa3c-f1794b977f0b_1.c4dc4059193a052925223b8d5a6fac7f.jpeg",
+    "img-back": "https://th.bing.com/th/id/OIP.Q8aD1nkeLPrVdVKizyZIOwHaHa?pid=ImgDet&rs=1"
+    },
+    {
+    "product_id": 25,
+    "licence_name": "Harry Potter",
+    "category_name": "Minis",
+    "product_name": "Harry Potter",
+    "product_description": "Funko Mini de Harry Potter",
+    "product_sku": "HP3333",
+    "product_price": 20000,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/e57b4bfd-a322-4005-80a9-f08fb6c23a8e_1.00eaf48cc8a43daee91efa7f8341e2cc.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+    "img-back": "https://th.bing.com/th/id/OIP.fJEczjqcKiPeCbuVnpvnHAAAAA?pid=ImgDet&rs=1"
+    },
+    {
+    "product_id": 26,
+    "licence_name": "Harry Potter",
+    "category_name": "Minis",
+    "product_name": "Hermione Granger",
+    "product_description": "Funko Mini de Hermione Granger",
+    "product_sku": "HG3333",
+    "product_price": 20000,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/9b7072f2-d789-4c94-8667-ac660527af7e_1.de735e8f8e5578dd5fc9c692b764fd10.jpeg",
+    "img-back": "https://cdn6.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/130698/180647/apihh7y0b__89634.1462988070.jpg?c=2"
+    },
+    {
+    "product_id": 27,
+    "licence_name": "Harry Potter",
+    "category_name": "Minis",
+    "product_name": "Minerva McGonagall",
+    "product_description": "Funko Mini de Minerva McGonagall",
+    "product_sku": "MMG3333",
+    "product_price": 20000,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/m/y/mystery-mini-minerva-mcgonagall1.jpg",
+    "img-back": "https://http2.mlstatic.com/D_NQ_NP_2X_652426-MLB31172626451_062019-F.jpg"
+    },
+    {
+    "product_id": 28,
+    "licence_name": "Star Wars",
+    "category_name": "Keychain",
+    "product_name": "Darth Vader",
+    "product_description": "Llavero funko de Darth Vader",
+    "product_sku": "DV3333",
+    "product_price": 8500,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/520ce099-6cdc-4922-999c-039f88407f56.ef55355d30f274367d9f6fa77d8216fa.png?odnWidth=612&odnHeight=612&odnBg=ffffff",
+    "img-back": "https://www.alphageekstore.com/wp-content/uploads/2021/04/Funko-Keychain-Star-Wars-Darth-Vader.jpg"
+    },
+    {
+    "product_id": 29,
+    "licence_name": "Star Wars",
+    "category_name": "Keychain",
+    "product_name": "Han Solo",
+    "product_description": "Llavero funko de Han Solo",
+    "product_sku": "HS3333",
+    "product_price": 8500,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://th.bing.com/th/id/OIP.ZJ2bl5YgxoE4wwT2LXJcbgHaHa?pid=ImgDet&rs=1",
+    "img-back": "https://th.bing.com/th/id/OIP.BLy2eopLJwK-C-8GmzdYBwHaHa?pid=ImgDet&rs=1"
+    },
+    {
+    "product_id": 30,
+    "licence_name": "Star Wars",
+    "category_name": "Keychain",
+    "product_name": "Luke Skywalker",
+    "product_description": "Llavero funko de Luke Skywalker",
+    "product_sku": "LS3333",
+    "product_price": 8500,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://cdn.shopk.it/usercontent/dream-pop-world/media/images/15e075c-funko-pocket-pop-keychain-star-wars-luke-skywalker.png",
+    "img-back": "https://colecionar.pt/5935-large_default/funko-pop-keychain-star-wars-luke-skywalker.jpg"
+    },
+    {
+    "product_id": 31,
+    "licence_name": "Star Wars",
+    "category_name": "Keychain",
+    "product_name": "Yoda",
+    "product_description": "Llavero funko de Yoda",
+    "product_sku": "YD3333",
+    "product_price": 8500,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/8433760e-d2a9-4f47-987b-10b36c0911a9.6b885c926788667450e2b8744ea0ef5a.png?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+    "img-back": "https://66703.cdn.simplo7.net/static/66703/sku/chaveiros-funko-pocket-pop-chaveiro-mestre-yoda-star-wars-funko-pop-pocket-keychain--p-1632244938223.jpg"
+    },
+    {
+    "product_id": 32,
+    "licence_name": "Star Wars",
+    "category_name": "Keychain",
+    "product_name": "Finn",
+    "product_description": "Llavero funko de Storm Trooper",
+    "product_sku": "FN3333",
+    "product_price": 8500,
+    "product_stock": 40,
+    "dues": 1,
+    "img-front": "https://i5.walmartimages.com/asr/0abd0255-149b-4a52-b356-e94c8bf4925b.74762936c6a716087186d61370fd4597.png",
+    "img-back": "https://colecionar.pt/5937-large_default/funko-pop-keychain-star-wars-luke-skywalker.jpg"
+    }
 ]

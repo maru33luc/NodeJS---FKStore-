@@ -1,4 +1,4 @@
-/* -----------------ASIDE----------------------------- */ 
+/* -----------------ASIDE----------------------------- */
 
 .shop__container {
     display: flex;
@@ -56,7 +56,7 @@
     flex-direction: column;
     margin-left: 10px;
     align-items: start;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 620px) {
@@ -73,7 +73,7 @@
 }
 
 @media screen and (max-width: 605px) {
-    .aside__input{
+    .aside__input {
         /* margin-top: 0px; */
     }
 }
@@ -200,7 +200,7 @@ button.aplicarFiltroBtn:hover {
     background-color: #333;
 }
 
-.limpiarFiltroBtn{
+.limpiarFiltroBtn {
     background: var(--secondary);
     border-radius: 5px;
     border: none;
@@ -244,7 +244,7 @@ button.aplicarFiltroBtn:hover {
         display: flex;
         flex-direction: column;
     }
-    
+
 }
 
 /* -----------------CARDS----------------------------- */
@@ -274,7 +274,7 @@ button.aplicarFiltroBtn:hover {
     margin-left: 30px;
 }
 
-.card-item{
+.card-item {
     margin: 15px;
 }
 
@@ -334,7 +334,7 @@ button.aplicarFiltroBtn:hover {
 
 /* ----------------- MEDIA QUERIES ----------------------------- */
 
-@media screen and (920px > width ) {
+@media screen and (920px > width) {
     .shop__container {
         display: flex;
         flex-direction: column;
@@ -349,7 +349,21 @@ button.aplicarFiltroBtn:hover {
     }
 }
 
-@media screen and (max-width: 552px) {
+@media screen and (max-width: 875px) {
+
+    .aplicarFiltroBtn {
+        margin-right: 400px;
+        margin-top: 5px;
+    }
+    .limpiarFiltroBtn {
+        margin-right: 400px;
+        margin-top: 5px;
+
+    }
+
+}
+
+@media screen and (max-width: 600px) {
     .shop__aside {
         flex-direction: column;
     }
@@ -365,11 +379,12 @@ button.aplicarFiltroBtn:hover {
         margin-left: 30px;
     }
 
-    .custom-select, #buscar {
+    .custom-select,
+    #buscar {
         margin-top: 0px;
     }
 
-    .precio div{
+    .precio div {
         padding-top: 5px;
     }
 
@@ -396,7 +411,7 @@ button.aplicarFiltroBtn:hover {
         padding: 0;
     }
 
-    .label_precio-min-max{
+    .label_precio-min-max {
         margin-top: 0px;
     }
 
@@ -414,29 +429,28 @@ button.aplicarFiltroBtn:hover {
         margin-left: 0;
     }
 
-  
+
 }
 
-@media  screen and (max-width: 350px) {
-    .precio div:nth-child(2){
+@media screen and (max-width: 350px) {
+    .precio div:nth-child(2) {
         margin-left: 0px;
     }
-    .precio :nth-child(2) label{
+
+    .precio :nth-child(2) label {
         margin-left: 0px;
         margin-right: 3px;
     }
-    .precio :nth-child(1) label{
+
+    .precio :nth-child(1) label {
         letter-spacing: 0.08em;
     }
-    #max-price{
+
+    #max-price {
         width: 70px;
     }
-    #min-price{
+
+    #min-price {
         width: 50px;
     }
 }
-
-
-
-
-
