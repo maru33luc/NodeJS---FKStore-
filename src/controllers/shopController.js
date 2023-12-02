@@ -21,12 +21,13 @@ const shopControllers = {
         const ordenarPor = req.query.ordenarPor || 'asc';
         const licencia = req.query.licence || '';
         const categoria = req.query.category || '';
+        const buscar = req.query.buscar || '';
 
         // Obtén los Funkos desde el servicio
         const funkos = funkoService.getFunkos();
 
         // Filtra y ordena los Funkos según los parámetros
-        const funkosFiltradosYOrdenados = funkoService.filtrarYOrdenarFunkos(funkos, minPrice, maxPrice, ordenarPor, licencia, categoria);
+        const funkosFiltradosYOrdenados = funkoService.filtrarYOrdenarFunkos(funkos, minPrice, maxPrice, ordenarPor, licencia, categoria, buscar);
 
         // Devuelve los Funkos filtrados y ordenados como JSON
         res.render('shop/shop', {

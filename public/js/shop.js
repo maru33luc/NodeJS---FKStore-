@@ -27,15 +27,35 @@ function validarYFormatearPrecios(input) {
 
 // -----------------FILTRADOS-------------------------
 
+const checkboxes = document.querySelectorAll('.checkbox-input');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            // Desmarcar todos los demás checkboxes
+            checkboxes.forEach(otherCheckbox => {
+                if (otherCheckbox !== checkbox) {
+                    otherCheckbox.checked = false;
+                }
+            });
+        });
+    });
+
 const select = document.getElementById('shop__aside-select');
 const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
+const btnBuscar = document.getElementById('buscar');
 
 btnAplicarFiltro.addEventListener('click', function () {
     const minPrice = minPriceInput.value;
     const maxPrice = maxPriceInput.value;
     const ordenarPor = select.value;
+    const buscar = btnBuscar.value;
+    const categorySelector = document.querySelector('input[name="licence"]:checked');
+    let category = '';
+    if (categorySelector){
+         category = categorySelector.id;
+    }
 
-    const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}`;
+    const url = `/shop/apply-filters?minPrice=${minPrice}&maxPrice=${maxPrice}&ordenarPor=${ordenarPor}&buscar=${buscar}&category=${category? category : ''}`;
 
     window.location.href = url;
 });
@@ -47,24 +67,25 @@ document.addEventListener('DOMContentLoaded', function () {
         behavior: 'smooth' // Puedes cambiar a 'auto' si prefieres un desplazamiento instantáneo
     });
     // Función para obtener parámetros de la URL
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) {
+    // function getParameterByName(name, url) {
+    //     if (!url) url = window.location.href;
+    //     name = name.replace(/[\[\]]/g, '\\$&');
+    //     const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    //         results = regex.exec(url);
+    //     if (!results) {
             
-            return null;
-        }
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
+    //         return null;
+    //     }
+    //     if (!results[2]) return '';
+    //     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    // }
 
     // Leer parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const minPriceParam = urlParams.get('minPrice');
     const maxPriceParam = urlParams.get('maxPrice');
     let ordenarPorParam = urlParams.get('ordenarPor');
+    const buscarParam = urlParams.get('buscar');
     
     if (!ordenarPorParam) {
         ordenarPorParam = 'az';
@@ -74,13 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
     minPriceInput.value = minPriceParam || '';
     maxPriceInput.value = maxPriceParam || '';
     select.value = ordenarPorParam || '';
+    btnBuscar.value = buscarParam || '';
 });
 
-const btnLimpiarFiltro = document.getElementById('btn-limpiar-filtro');
-
-btnLimpiarFiltro.addEventListener('click', function () {
-    window.location.href = '/shop';
-});
 
 
 // --------------Pagination----------------
@@ -170,6 +187,8 @@ dynamicPageLinks.forEach((link, index) => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    dynamicPageLinks[0].classList.add('active');
+    if(dynamicPageLinks.length > 0){
+        dynamicPageLinks[0].classList.add('active');
+    }
 }
 );
