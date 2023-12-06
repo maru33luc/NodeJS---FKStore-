@@ -16,7 +16,6 @@ const app = express();
 // const secretKey = crypto.randomBytes(32).toString('hex');
 const secretKey = 'secretKey';
 
-
 app.use(session({
     secret : secretKey,
     resave : false,
@@ -36,9 +35,6 @@ const port = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/src/views'));
-
-
-
 
 
 app.listen(port, () => {
