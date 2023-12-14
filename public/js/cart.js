@@ -20,7 +20,7 @@ itemCart.forEach(item => {
         quantity.value++;
         total++;
         subtotal += parseFloat(itemPrice.innerHTML);
-        totalCart.innerHTML = subtotal.toFixed(2);
+        totalCart.innerHTML ='$' + subtotal.toFixed(2);
         updateCart();
         // actualizar carrito servidor
         const id = e.target.dataset.itemId;
@@ -36,7 +36,7 @@ itemCart.forEach(item => {
             quantity.value--;
             total--;
             subtotal -= parseFloat(itemPrice.innerHTML);
-            totalCart.innerHTML = subtotal.toFixed(2);
+            totalCart.innerHTML = '$' +  subtotal.toFixed(2);
             updateCart();
             // actualizar carrito servidor
             const id = e.target.dataset.itemId;
@@ -91,13 +91,14 @@ itemCart.forEach(item => {
     const subtotalItem = parseInt(quantity.value) * parseFloat(itemPrice.innerHTML);
     subtotal += subtotalItem;
     total += parseInt(quantity.value);
-    totalCart.innerHTML = subtotal.toFixed(2);
+    // totalCart.innerHTML = subtotal.toFixed(2);
+    totalCart.innerHTML = '$' + subtotal.toFixed(2);
 });
 
 // Función para actualizar el resumen del carrito
 function updateCart() {
     totalItemsCart.innerHTML = total;
-    subtotalItems.innerHTML = subtotal.toFixed(2);
+    subtotalItems.innerHTML ='$' + subtotal.toFixed(2);
 }
 
 // Llama a la función para establecer los valores iniciales

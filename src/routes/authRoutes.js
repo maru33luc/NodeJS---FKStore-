@@ -11,7 +11,7 @@ router.post('/login', authControllers.processLogin);
 
 router.get('/register',ensureAuthenticated , authControllers.register);
 
-router.post('/register', validator.validateRegistration, validator.     handleValidationErrors,
+router.post('/register', validator.validateRegistration, validator.handleValidationErrors,
     authControllers.processRegister);
 
 router.get('/logout', authControllers.logout);

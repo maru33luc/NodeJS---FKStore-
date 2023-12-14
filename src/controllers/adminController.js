@@ -64,8 +64,3 @@ const adminControllers = {
 }
 
 module.exports = adminControllers;
-
-
-
-
-
