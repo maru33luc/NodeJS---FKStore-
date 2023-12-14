@@ -5,7 +5,8 @@ const funkos = JSON.parse(funkoJson);
 const mainControllers = {
     home: (req, res) => {
         const user = req.session.userLogged;
-        res.render('index', {funkos: funkos, user: user});
+        const sliderTitle = 'ULTIMAS NOVEDADES';
+        res.render('index', {funkos: funkos, user: user, sliderTitle: sliderTitle});
     },
     contact: (req, res) => {
         user = req.session.userLogged;

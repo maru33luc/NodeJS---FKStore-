@@ -41,12 +41,13 @@ const shopControllers = {
         const id = req.params.id;
         const funkos = funkoService.getFunkos();
         const funko = funkoService.getFunko(id);
+        const sliderTitle = 'PRODUCTOS RELACIONADOS';
         if (!funko) {
             return res.send('No se encontró el funko que estás buscando');
         } else {
             return res.render('shop/item', {
                 funko: funko, funkos: funkos,
-                user: user, error: error
+                user: user, error: error, sliderTitle: sliderTitle
             });
         }
     },
@@ -150,6 +151,7 @@ const shopControllers = {
                 }
                 cartService.updateCart(userId, newCart);
                 const items = cartService.getCart(userId);
+                const sliderTitle = 'PRODUCTOS RELACIONADOS';
                 const funkosItems = [];
                 items.items.forEach(item => {
                     const funko = funkoService.getFunko(item.id);
@@ -158,7 +160,7 @@ const shopControllers = {
                 });
                 res.render('shop/item', {
                     funkos: funkosItems, user: user,
-                    userId: userId, error: error, funko: funko
+                    userId: userId, error: error, funko: funko, sliderTitle: sliderTitle
                 });
             }
         }
@@ -188,6 +190,7 @@ const shopControllers = {
             cartService.updateCart(userId, cart);
             const items = cartService.getCart(userId);
             const funkosItems = [];
+            const sliderTitle = 'PRODUCTOS RELACIONADOS';
             items.items.forEach(item => {
                 const funko = funkoService.getFunko(item.id);
                 funko.quantity = item.quantity;
@@ -195,7 +198,7 @@ const shopControllers = {
             });
             res.render('shop/item', {
                 funkos: funkosItems, user: user,
-                userId: userId, error: error, funko: funko
+                userId: userId, error: error, funko: funko, sliderTitle: sliderTitle
             });
         } else {
             const newCart = cartService.createCart(userId);
@@ -203,6 +206,7 @@ const shopControllers = {
             cartService.updateCart(userId, newCart);
             const items = cartService.getCart(userId);
             const funkosItems = [];
+            const sliderTitle = 'PRODUCTOS RELACIONADOS';
             items.items.forEach(item => {
                 const funko = funkoService.getFunko(item.id);
                 funko.quantity = item.quantity;
@@ -210,7 +214,7 @@ const shopControllers = {
             });
             res.render('shop/item', {
                 funkos: funkosItems, user: user,
-                userId: userId, error: error, funko: funko
+                userId: userId, error: error, funko: funko, sliderTitle: sliderTitle
             });
         }
     }
