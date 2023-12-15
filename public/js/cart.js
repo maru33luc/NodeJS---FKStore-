@@ -22,13 +22,19 @@ itemCart.forEach(item => {
         subtotal += parseFloat(itemPrice.innerHTML);
         totalCart.innerHTML ='$' + subtotal.toFixed(2);
         updateCart();
+        
         // actualizar carrito servidor
         const id = e.target.dataset.itemId;
         const userId = e.target.dataset.userId;
         if (user) {
             const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
             window.location.href = url;
+        }else{
+            // actualizar carrito local
+            cartLocalService.updateCart(id, quantity.value);
         }
+        
+
     });
 
     btnSub.addEventListener('click', (e) => {
@@ -44,6 +50,9 @@ itemCart.forEach(item => {
             if (user) {
                 const url = `/shop/add?idUser=${userId}&id=${id}&quantity=${quantity.value}`;
                 window.location.href = url;
+            }else{
+                // actualizar carrito local
+                cartLocalService.updateCart(id, quantity.value);
             }
         }
     });
