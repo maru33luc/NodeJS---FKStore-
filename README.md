@@ -2,7 +2,7 @@
 
 ## Descripción
 
-FunkoShop es una aplicación web para la gestión y compra de figuras Funko Pop. Permite a los usuarios registrarse, iniciar sesión, explorar productos y gestionar su carrito de compras. Los administradores pueden agregar, editar y eliminar productos.
+FunkoShop es una aplicación web para la gestión y compra de figuras Funko Pop. Permite a los usuarios registrarse, iniciar sesión, explorar productos y gestionar su carrito de compras. Los administradores pueden agregar, editar y eliminar productos. La aplicación cuenta con un backend desarrollado en Node.js y utiliza EJS para renderizar las vistas.
 
 ## Tecnologías Utilizadas
 
