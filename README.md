@@ -1,25 +1,66 @@
-# NodeJS---FKStore-
+# FunkoShop
 
-# Proyecto de NodeJs de una tienda de Funkos
+## Descripción
 
-Este es un proyecto de NodeJs que consiste en crear una tienda de Funkos para el curso de Codo a Codo 2023. Los Funkos son figuras coleccionables de personajes de películas, series, videojuegos, cómics y otros medios de entretenimiento. El objetivo del proyecto es desarrollar una aplicación web que permita a los usuarios ver, comprar y vender Funkos de forma fácil y segura.
+FunkoShop es una aplicación web para la gestión y compra de figuras Funko Pop. Permite a los usuarios registrarse, iniciar sesión, explorar productos y gestionar su carrito de compras. Los administradores pueden agregar, editar y eliminar productos.
 
-## Características principales
+## Tecnologías Utilizadas
 
--La aplicación web está desarrollada en Node.js, un entorno de ejecución de JavaScript que facilita la creación de aplicaciones web escalables y de alto rendimiento.
-Se emplea el framework Express, que ofrece características como manejo de rutas, middleware, plantillas, y gestión de errores para facilitar el desarrollo web con Node.js.
--Se integra Express Validator para validar datos del cliente, Bcrypt para el hash de contraseñas, y EJS como motor de plantillas.
--La autenticación se realiza registrandose como usuario en la interfaz de la aplicacion web, y en caso de querer acceder como administrador, se debe modificar en el json de user el campo admin a true, ubicado en la ruta /data/users.json
+- Node.js
+- Express
+- EJS (Embedded JavaScript)
+- Express Validator
+- Bcrypt para la encriptación de contraseñas
+- JSON para almacenamiento de datos
 
-## Instrucciones de uso
+## Estructura de Rutas
 
-Para usar la aplicación web, se deben seguir los siguientes pasos:
+### Rutas de Autenticación
 
-- Clonar el repositorio del proyecto desde GitHub o descargar el código fuente en formato ZIP.
-- Instalar las dependencias del proyecto con el comando `npm install` en la terminal.
-- Ejecutar el comando `npm start` en la terminal para iniciar el servidor de la aplicación web.
-- Abrir un navegador web y acceder a la dirección `http://localhost:3000` 
-- Registrarse o iniciar sesión con una cuenta de usuario para acceder a las funcionalidades de la aplicación web, como ver, comprar y vender Funkos.
-- Regístrate o inicia sesión con la cuenta de usuario (para funciones como ver, comprar, y vender Funkos). Ten en cuenta que la sesión de administrador está disponible con el correo "admin@gmail.com" y la contraseña "123456", lo que permite acceder a la vista de administrador para agregar, editar y eliminar Funkos.
+- **GET** `/login` - Muestra el formulario de inicio de sesión.
+- **POST** `/login` - Procesa el inicio de sesión.
+- **GET** `/register` - Muestra el formulario de registro.
+- **POST** `/register` - Procesa el registro de un nuevo usuario.
+- **GET** `/logout` - Cierra la sesión del usuario.
 
+### Rutas de Administración
 
+- **GET** `/admin` - Muestra el panel de administración con la lista de productos.
+- **GET** `/admin/create` - Muestra el formulario para crear un nuevo producto.
+- **POST** `/admin/create` - Procesa la creación de un nuevo producto.
+- **GET** `/admin/edit/:id` - Muestra el formulario para editar un producto existente.
+- **POST** `/admin/edit/:id` - Procesa la edición de un producto.
+- **DELETE** `/admin/delete/:id` - Elimina un producto.
+
+### Rutas de Tienda
+
+- **GET** `/shop` - Muestra la lista de productos disponibles.
+- **GET** `/shop/item/:id` - Muestra los detalles de un producto específico.
+- **GET** `/shop/cart` - Muestra el carrito de compras del usuario.
+- **GET** `/shop/local` - Muestra el carrito local.
+- **GET** `/shop/add` - Agrega un producto al carrito desde la vista del carrito.
+- **GET** `/shop/addItem` - Agrega un producto al carrito desde la vista del producto.
+- **POST** `/shop/cart` - Procesa el checkout.
+
+### Rutas de Información
+
+- **GET** `/home` - Muestra la página de inicio.
+- **GET** `/contact` - Muestra la página de contacto.
+- **GET** `/about` - Muestra información sobre la aplicación.
+- **GET** `/faqs` - Muestra preguntas frecuentes.
+
+## Instalación
+
+1. Clona el repositorio.
+2. Navega al directorio del proyecto.
+3. Ejecuta `npm install` para instalar las dependencias.
+4. Configura tu base de datos y archivos de datos según sea necesario.
+5. Ejecuta `npm start` para iniciar la aplicación.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT.
